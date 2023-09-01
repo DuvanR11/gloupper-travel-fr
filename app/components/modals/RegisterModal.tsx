@@ -67,6 +67,7 @@ const RegisterModal = () => {
             errors={errors}
             required
         />
+        
     </div>
   )
 
