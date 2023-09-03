@@ -292,7 +292,7 @@ const LocationSelects: React.FC<LocationSelectProps> = ({ value, onChange }) => 
 
   const Map = useMemo(() => dynamic(() => import('../Map'), { 
     ssr: false 
-  }), []);
+  }), [selectedCity]);
 
   const countryOptions = countries.map((country) => ({
     value: country.id,
