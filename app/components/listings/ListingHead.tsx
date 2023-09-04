@@ -31,16 +31,17 @@ const ListingHead: React.FC<ListingHeadProps> = ({
 
   return ( 
     <>
-      <div className="flex flex-row">
+      <div className="flex flex-row items-end justify-between">
         <Heading
           title={title}
-          subtitle={`${location?.region}, ${location?.label}`}
+          subtitle={`Huila, ${locationValue}`}
         />
         
       
         <HeartButton 
               listingId={id}
               currentUser={currentUser}
+              text={true}
             />
       </div>
 
@@ -61,41 +62,13 @@ const ListingHead: React.FC<ListingHeadProps> = ({
                   <Image
                     src={image}
                     width={300}
-                    height={300}
-                    className="object-cover w-full h-full"
+                    height={150}
+                    style={{ objectFit: 'cover', height: 150 }}
                     alt="Image"
                   />
                 </div>
               ))
             }
-{/*               
-              <div className="w-full h-auto overflow-hidden rounded-lg">
-                <Image
-                  src={imageSrc}
-                  width={300}
-                  height={300}
-                  className="object-cover w-full h-full"
-                  alt="Image"
-                />
-              </div>
-              <div className="w-full h-auto overflow-hidden rounded-lg">
-                <Image
-                  src={imageSrc}
-                  width={300}
-                  height={300}
-                  className="object-cover w-full h-full"
-                  alt="Image"
-                />
-              </div>
-              <div className="w-full h-auto overflow-hidden rounded-lg">
-                <Image
-                  src={imageSrc}
-                  width={300}
-                  height={300}
-                  className="object-cover w-full h-full"
-                  alt="Image"
-                />
-              </div> */}
           </div>
       </div>
 

@@ -39,9 +39,9 @@ const ImagesUploads: React.FC<ImageUploadProps> = ({
 
   return (
     <div className="flex flex-col gap-4">
-        <div className="flex flex-row">
+        <div className="flex flex-row gap-4">
             {imageUrls.map((imageUrl, index) => (
-                <div key={index} className="relative w-[110px]">
+                <div key={index} className="relative w-[120px]">
                 <button
                     className="absolute right-1 top-1 p-1 bg-red-500 text-white rounded-full"
                     onClick={() => handleRemoveImage(index)}
@@ -49,14 +49,12 @@ const ImagesUploads: React.FC<ImageUploadProps> = ({
                     <FaCut size={12}/>
                 </button>
                 <Image
-                    width={110}
-                    height={80}
-                    style={{ objectFit: 'cover' }}
+                    width={120}
+                    height={85}
+                    style={{ objectFit: 'cover', height: 85 }}
                     src={imageUrl}
                     alt={`Image ${index + 1}`}
-                >
-                    
-                </Image>
+                />
                 </div>
             ))}
        </div>
@@ -91,7 +89,7 @@ const ImagesUploads: React.FC<ImageUploadProps> = ({
             >
               <TbPhotoPlus size={50} />
               <div className="font-semibold text-lg">
-                Click to upload
+                Da clic para cargar
               </div>
             </div>
           )}

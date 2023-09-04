@@ -10,11 +10,13 @@ import ClientOnly from "./ClientOnly";
 interface HeartButtonProps {
   listingId: string
   currentUser?: SafeUser | null
+  text?: boolean;
 }
 
 const HeartButton: React.FC<HeartButtonProps> = ({ 
   listingId,
-  currentUser
+  currentUser,
+  text
 }) => {
   const { hasFavorited, toggleFavorite } = useFavorite({
     listingId,
@@ -25,27 +27,34 @@ const HeartButton: React.FC<HeartButtonProps> = ({
     <div 
       onClick={toggleFavorite}
       className="
-        relative
         hover:opacity-80
         transition
         cursor-pointer
+        flex
+        flex-row
+        gap-2
       "
     >
-      <AiOutlineHeart
-        size={28}
-        className="
-          fill-white
-          absolute
-          -top-[2px]
-          -right-[2px]
-        "
-      />
-      <AiFillHeart
-        size={24}
-        className={
-          hasFavorited ? 'fill-rose-500' : 'fill-neutral-500/70'
-        }
-      />
+      <div className="relative">
+        <AiOutlineHeart
+          size={28}
+          className="
+            fill-white
+            absolute
+            -top-[2px]
+            -right-[2px]
+          "
+        />
+        <AiFillHeart
+          size={24}
+          className={
+            hasFavorited ? 'fill-cyan-500' : 'fill-neutral-500/70'
+          }
+        />
+      </div>
+      { text && (
+        <p className="fill-neutral-500/20 underline">Guardar</p>
+      )}
     </div>
    );
 }

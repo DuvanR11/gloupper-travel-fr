@@ -5,8 +5,9 @@ import { IconType } from "react-icons";
 
 import useCountries from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
-
-import Avatar from "../Avatar";
+import { 
+  GiIsland,
+} from 'react-icons/gi';
 import ListingCategory from "./ListingCategory";
 import ListingServices from "./ListingServices";
 
@@ -17,9 +18,7 @@ const Map = dynamic(() => import('../Map'), {
 interface ListingInfoProps {
   user: SafeUser,
   description: string;
-  guestCount: number;
-  roomCount: number;
-  bathroomCount: number;
+  services: string[]
   category: {
     icon: IconType,
     label: string;
@@ -31,11 +30,9 @@ interface ListingInfoProps {
 const ListingInfo: React.FC<ListingInfoProps> = ({
   user,
   description,
-  guestCount,
-  roomCount,
-  bathroomCount,
   category,
   locationValue,
+  services
 }) => {
   const { getByValue } = useCountries();
 
@@ -43,39 +40,13 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
 
   return ( 
     <div className="col-span-4 flex flex-col gap-8">
-      <div className="flex flex-col gap-2">
-        <div 
-          className="
-            text-xl 
-            font-semibold 
-            flex 
-            flex-row 
-            items-center
-            gap-2
-          "
-        >
-          <div>Hosted by {user?.name}</div>
-          <Avatar src={user?.image} />
-        </div>
-        <div className="
-            flex 
-            flex-row 
-            items-center 
-            gap-4 
-            font-light
-            text-neutral-500
-          "
-        >
-          <div>
-            {guestCount} guests
-          </div>
-          <div>
-            {roomCount} rooms
-          </div>
-          <div>
-            {bathroomCount} bathrooms
-          </div>
-        </div>
+      <div 
+        className="
+          text-xl 
+          font-semibold 
+        "
+      >
+        <div>Alojamiento vacacional entero - Anfitrión: Bestbooking</div>
       </div>
       <hr />
       {category && (
@@ -92,18 +63,20 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
       </div>
       <hr />
         <div>
-          <div className="font-semibold">Lo que este lugar ofrece</div>
-          {category && (
-            <ListingServices
-              icon={category.icon} 
-              label={category?.label}
-              description={category?.description} 
-            />
-          )}
-          
+          <div className="font-semibold text-xl mb-4">Lo que este lugar ofrece</div>
+          <div className="grid grid-cols-2 gap-5">
+            {services.map((service, index) => (
+              <ListingServices
+              key={index}
+              icon={GiIsland} 
+              label={service}
+              description={service} 
+              />
+            ))}
+          </div>
         </div>
       <hr />
-      <Map center={coordinates} />
+      <Map center={[2, 70]} />
     </div>
    );
 }

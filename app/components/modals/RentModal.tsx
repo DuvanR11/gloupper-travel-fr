@@ -23,6 +23,7 @@ import Input from '../inputs/Input';
 import Heading from '../Heading';
 import LocationSelects from '../inputs/Location';
 import ImagesUploads from '../inputs/ImagesUploads';
+import { arrayServices } from '@/app/utils';
 
 enum STEPS {
   CATEGORY = 0,
@@ -39,6 +40,7 @@ const RentModal = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(STEPS.CATEGORY);
+  const [selectedServices, setSelectedServices] = useState<any>([]);
 
   const { 
     register, 
@@ -53,24 +55,22 @@ const RentModal = () => {
     defaultValues: {
       title: '',
       description: '',
-      services: ['services1', 'services2'],
-      category: '',
-      departament: 'huila',
-      location: null,
-      guestCount: 1,
+      services: [],
       roomCount: 1,
       bathroomCount: 1,
+      guestCount: 1,
+      category: '',
+      departament: '',
+      location: null,
       images: [],
-      price: 1,
-      imageSrc: ''
+      imageSrc: '',
+      price: 1
     }
   });
 
   const location = watch('location');
   const category = watch('category');
-  const guestCount = watch('guestCount');
-  const roomCount = watch('roomCount');
-  const bathroomCount = watch('bathroomCount');
+  const services = watch('services');
   const imageSrc = watch('imageSrc');
   const images = watch('images');
 
@@ -85,10 +85,8 @@ const RentModal = () => {
     city: null,
   });
   
- 
-
   const handleLocationChange = (addLocation: any) => {
-    console.log(addLocation)
+    setCustomValue('services', selectedServices)
     setSelectedLocation(addLocation);
     setCustomValue('location', addLocation?.value.name)
   }
@@ -109,34 +107,33 @@ const RentModal = () => {
     setStep((value) => value + 1);
   }
 
-  const [selectedCategories, setSelectedCategories] = useState(['']);
-
-  const toggleCategory = (category: string) => {
-    if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((cat) => cat !== category));
+  const toggleServices = (service: string) => {
+    if (selectedServices.includes(service)) {
+      setSelectedServices(selectedServices.filter((cat: string) => cat !== service));
     } else {
-      setCustomValue('category', category)
-      setSelectedCategories([...selectedCategories, category]);
+      setSelectedServices([...selectedServices, service]);
     }
   };
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    console.log(location)
     if (step !== STEPS.MULTIMEDIA) {
       return onNext();
     }
-    console.log(data)
+  
     setIsLoading(true);
 
     axios.post('/api/listings', data)
     .then(() => {
-      toast.success('Listing created!');
+      toast.success('Tu lugar fue creado');
       router.refresh();
       reset();
+      setSelectedServices([])
       setStep(STEPS.CATEGORY)
       rentModal.onClose();
     })
     .catch(() => {
-      toast.error('Something went wrong.');
+      toast.error('Ohh Ohh algo salio mal.');
     })
     .finally(() => {
       setIsLoading(false);
@@ -145,10 +142,10 @@ const RentModal = () => {
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.MULTIMEDIA) {
-      return 'Create'
+      return 'Finalizar'
     }
 
-    return 'Next'
+    return 'Siguiente'
   }, [step]);
 
   const secondaryActionLabel = useMemo(() => {
@@ -156,7 +153,7 @@ const RentModal = () => {
       return undefined
     }
 
-    return 'Back'
+    return 'Anterior'
   }, [step]);
 
   let bodyContent = (
@@ -229,11 +226,11 @@ const RentModal = () => {
           overflow-y-auto
         "
       >
-        {categories.map((item) => (
+        {arrayServices.map((item) => (
           <div key={item.label} className="col-span-1">
             <CategoryInput
-              onClick={toggleCategory}
-              selected={selectedCategories.includes(item.label)}
+              onClick={toggleServices}
+              selected={selectedServices.includes(item.label)}
               label={item.label}
               icon={item.icon}
             />

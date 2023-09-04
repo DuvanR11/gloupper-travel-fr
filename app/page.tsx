@@ -37,7 +37,7 @@ const Home = async ({ searchParams }: HomeProps) => {
             lg:grid-cols-3
             xl:grid-cols-4
             2xl:grid-cols-5
-            gap-8
+            gap-6
           "
         >
           {listings.map((listing: any) => (

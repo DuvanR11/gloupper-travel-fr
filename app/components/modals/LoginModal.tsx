@@ -70,12 +70,12 @@ const LoginModal = () => {
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="Welcome back"
-        subtitle="Login to your account!"
+        title="Bienvenido de nuevo"
+        subtitle="¡Ingresa a tu cuenta!"
       />
       <Input
         id="email"
-        label="Email"
+        label="Correo"
         disabled={isLoading}
         register={register}  
         errors={errors}
@@ -83,7 +83,7 @@ const LoginModal = () => {
       />
       <Input
         id="password"
-        label="Password"
+        label="Contraseña"
         type="password"
         disabled={isLoading}
         register={register}
@@ -98,19 +98,19 @@ const LoginModal = () => {
       <hr />
       <Button 
         outline 
-        label="Continue with Google"
+        label="Continuar con Google"
         icon={FcGoogle}
         onClick={() => signIn('google')}
       />
       <Button 
         outline 
-        label="Continue with Github"
+        label="Continuar con Github"
         icon={AiFillGithub}
         onClick={() => signIn('github')}
       />
       <div className="
       text-neutral-500 text-center mt-4 font-light">
-        <p>First time using Airbnb?
+        <p>¿Primera vez que usas Gloupper?
           <span 
             onClick={onToggle} 
             className="
@@ -118,7 +118,7 @@ const LoginModal = () => {
               cursor-pointer 
               hover:underline
             "
-            > Create an account</span>
+            >Crea una cuenta</span>
         </p>
       </div>
     </div>

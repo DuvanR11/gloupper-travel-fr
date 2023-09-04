@@ -69,7 +69,7 @@ const RegisterModal= () => {
       />
       <Input
         id="email"
-        label="Email"
+        label="Correo"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -77,7 +77,7 @@ const RegisterModal= () => {
       />
       <Input
         id="name"
-        label="Name"
+        label="Nombre"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -85,7 +85,7 @@ const RegisterModal= () => {
       />
       <Input
         id="password"
-        label="Password"
+        label="Contraseña"
         type="password"
         disabled={isLoading}
         register={register}
@@ -100,13 +100,13 @@ const RegisterModal= () => {
       <hr />
       <Button 
         outline 
-        label="Continue with Google"
+        label="Continuar con Google"
         icon={FcGoogle}
         onClick={() => signIn('google')} 
       />
       <Button 
         outline 
-        label="Continue with Github"
+        label="ContinuR con Github"
         icon={AiFillGithub}
         onClick={() => signIn('github')}
       />
@@ -118,7 +118,7 @@ const RegisterModal= () => {
           font-light
         "
       >
-        <p>Already have an account?
+        <p>¿Ya tienes una cuenta?
           <span 
             onClick={onToggle} 
             className="
@@ -126,7 +126,7 @@ const RegisterModal= () => {
               cursor-pointer 
               hover:underline
             "
-            > Log in</span>
+            >Iniciar sesion</span>
         </p>
       </div>
     </div>

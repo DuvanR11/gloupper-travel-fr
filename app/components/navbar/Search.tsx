@@ -23,7 +23,7 @@ const Search = () => {
       return getByValue(locationValue as string)?.label;
     }
 
-    return 'Anywhere';
+    return 'Viaja por el Huila';
   }, [locationValue, getByValue]);
 
   const durationLabel = useMemo(() => {
@@ -39,7 +39,7 @@ const Search = () => {
       return `${diff} Days`;
     }
 
-    return 'Any Week'
+    return 'Categoria'
   }, [startDate, endDate]);
 
   const guestLabel = useMemo(() => {
@@ -47,7 +47,7 @@ const Search = () => {
       return `${guestCount} Guests`;
     }
 
-    return 'Add Guests';
+    return 'Servicios';
   }, [guestCount]);
 
   return ( 
@@ -112,7 +112,7 @@ const Search = () => {
           <div 
             className="
               p-2 
-              bg-rose-500 
+              bg-cyan-600
               rounded-full 
               text-white
             "
