@@ -7,7 +7,7 @@ import { cities } from '@/app/utils';
 export type CitySelectValue = {
   value: string,
   label: string,
-  latlng: string,
+  latlng: string[],
 }
 
 interface CountrySelectProps {

@@ -106,7 +106,7 @@ const RegisterModal= () => {
       />
       <Button 
         outline 
-        label="ContinuR con Github"
+        label="Continuar con Github"
         icon={AiFillGithub}
         onClick={() => signIn('github')}
       />
@@ -126,7 +126,7 @@ const RegisterModal= () => {
               cursor-pointer 
               hover:underline
             "
-            >Iniciar sesion</span>
+            > Iniciar sesion</span>
         </p>
       </div>
     </div>
