@@ -3,24 +3,22 @@
 import qs from 'query-string';
 import dynamic from 'next/dynamic'
 import { useCallback, useMemo, useState } from "react";
-import { Range } from 'react-date-range';
-import { formatISO } from 'date-fns';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import useSearchModal from "@/app/hooks/useSearchModal";
 
 import Modal from "./Modal";
-import Calendar from "../inputs/Calendar";
-import Counter from "../inputs/Counter";
-import CountrySelect, { 
-  CountrySelectValue
-} from "../inputs/CountrySelect";
 import Heading from '../Heading';
+import { CitySelect } from '../selects';
+import { arrayServices, cities } from '@/app/utils';
+import ServicesInput from '../inputs/ServicesInput';
+import { categories } from '../navbar/Categories';
+import CategoryBox from '../inputs/CategoryInput';
 
 enum STEPS {
   LOCATION = 0,
-  DATE = 1,
-  INFO = 2,
+  CATEGORIA = 1,
+  SERVICES = 2,
 }
 
 const SearchModal = () => {
@@ -30,15 +28,8 @@ const SearchModal = () => {
 
   const [step, setStep] = useState(STEPS.LOCATION);
 
-  const [location, setLocation] = useState<CountrySelectValue>();
-  const [guestCount, setGuestCount] = useState(1);
-  const [roomCount, setRoomCount] = useState(1);
-  const [bathroomCount, setBathroomCount] = useState(1);
-  const [dateRange, setDateRange] = useState<Range>({
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection'
-  });
+  const [location, setLocation] = useState<any>();
+  const [category, setCategory] = useState<any>();
 
   const Map = useMemo(() => dynamic(() => import('../Map'), { 
     ssr: false 
@@ -52,8 +43,21 @@ const SearchModal = () => {
     setStep((value) => value + 1);
   }, []);
 
+  const [selectedServices, setSelectedServices] = useState<any>([]);
+
+  const toggleServices = (service: string) => {
+    setSelectedServices((prevSelectedServices: string[]) => {
+      if (prevSelectedServices.includes(service)) {
+        return prevSelectedServices.filter((cat: string) => cat !== service);
+      } else {
+        return [...prevSelectedServices, service];
+      }
+    });
+  };
+  
+
   const onSubmit = useCallback(async () => {
-    if (step !== STEPS.INFO) {
+    if (step !== STEPS.SERVICES) {
       return onNext();
     }
 
@@ -63,21 +67,15 @@ const SearchModal = () => {
       currentQuery = qs.parse(params.toString())
     }
 
+    console.log(selectedServices)
     const updatedQuery: any = {
       ...currentQuery,
       locationValue: location?.value,
-      guestCount,
-      roomCount,
-      bathroomCount
+      category: category,
+      services: selectedServices,
     };
 
-    if (dateRange.startDate) {
-      updatedQuery.startDate = formatISO(dateRange.startDate);
-    }
-
-    if (dateRange.endDate) {
-      updatedQuery.endDate = formatISO(dateRange.endDate);
-    }
+    console.log(updatedQuery)
 
     const url = qs.stringifyUrl({
       url: '/',
@@ -93,20 +91,16 @@ const SearchModal = () => {
     searchModal, 
     location, 
     router, 
-    guestCount, 
-    roomCount,
-    dateRange,
     onNext,
-    bathroomCount,
     params
   ]);
 
   const actionLabel = useMemo(() => {
-    if (step === STEPS.INFO) {
-      return 'Search'
+    if (step === STEPS.SERVICES) {
+      return 'Buscar'
     }
 
-    return 'Next'
+    return 'Siguiente'
   }, [step]);
 
   const secondaryActionLabel = useMemo(() => {
@@ -114,69 +108,87 @@ const SearchModal = () => {
       return undefined
     }
 
-    return 'Back'
+    return 'Anterior'
   }, [step]);
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Where do you wanna go?"
-        subtitle="Find the perfect location!"
+        title="¿A dónde quieres ir?"
+        subtitle="¡Encuentra la ubicación perfecta!"
       />
-      <CountrySelect 
+      <CitySelect 
         value={location} 
         onChange={(value) => 
-          setLocation(value as CountrySelectValue)} 
+          setLocation(value as any)} 
       />
       <hr />
       <Map center={location?.latlng} />
     </div>
   )
 
-  if (step === STEPS.DATE) {
+  if (step === STEPS.CATEGORIA) {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="When do you plan to go?"
-          subtitle="Make sure everyone is free!"
+          title="¿Cuál de estos describe mejor tu lugar?"
+          subtitle="Elige una categoría"
         />
-        <Calendar
-          onChange={(value) => setDateRange(value.selection)}
-          value={dateRange}
-        />
+
+     <div 
+        className="
+          grid 
+          grid-cols-1 
+          md:grid-cols-2 
+          gap-3
+          max-h-[50vh]
+          overflow-y-auto
+        "
+      >
+        {categories.map((item) => (
+          <div key={item.label} className="col-span-1">
+            <CategoryBox
+              onClick={(category: any) => 
+                setCategory(category)}
+              selected={category === item.label}
+              label={item.label}
+              icon={item.icon}
+            />
+          </div>
+        ))}
+      </div>
       </div>
     )
   }
 
-  if (step === STEPS.INFO) {
+  if (step === STEPS.SERVICES) {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="More information"
-          subtitle="Find your perfect place!"
+          title="¿Cuáles de estos describe mejor tu lugar?"
+          subtitle="Elige tus servicios"
         />
-        <Counter 
-          onChange={(value) => setGuestCount(value)}
-          value={guestCount}
-          title="Guests" 
-          subtitle="How many guests are coming?"
-        />
-        <hr />
-        <Counter 
-          onChange={(value) => setRoomCount(value)}
-          value={roomCount}
-          title="Rooms" 
-          subtitle="How many rooms do you need?"
-        />        
-        <hr />
-        <Counter 
-          onChange={(value) => {
-            setBathroomCount(value)
-          }}
-          value={bathroomCount}
-          title="Bathrooms"
-          subtitle="How many bahtrooms do you need?"
-        />
+        <div 
+        className="
+          grid 
+          grid-cols-1 
+          md:grid-cols-2 
+          gap-3
+          max-h-[50vh]
+          overflow-y-auto
+        "
+        >
+          {arrayServices.map((item) => (
+            <div key={item.label} className="col-span-1">
+              <ServicesInput
+                onClick={toggleServices}
+                selected={selectedServices.includes(item.label)}
+                label={item.label}
+                icon={item.icon}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
@@ -184,7 +196,7 @@ const SearchModal = () => {
   return (
     <Modal
       isOpen={searchModal.isOpen}
-      title="Filters"
+      title="Filtros"
       actionLabel={actionLabel}
       onSubmit={onSubmit}
       secondaryActionLabel={secondaryActionLabel}

@@ -14,8 +14,8 @@ const TripsPage = async () => {
     return (
       <ClientOnly>
         <EmptyState
-          title="Unauthorized"
-          subtitle="Please login"
+          title="No autorizado"
+          subtitle="Por favor Iniciar sesión"
         />
       </ClientOnly>
     );
@@ -27,8 +27,8 @@ const TripsPage = async () => {
     return (
       <ClientOnly>
         <EmptyState
-          title="No trips found"
-          subtitle="Looks like you havent reserved any trips."
+          title="No se encontraron viajes"
+          subtitle="Parece que no has recibido ningún viaje."
         />
       </ClientOnly>
     );
