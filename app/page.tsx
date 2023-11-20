@@ -17,7 +17,12 @@ const Home = async ({ searchParams }: HomeProps) => {
   
   if (listings.length === 0) {
     return (
-      <EmptyState showReset />
+      <>
+        <Navbar currentUser={currentUser}/>
+        <div className="pb-20 pt-32">
+          <EmptyState showReset />
+        </div>
+      </>
     );
   }
 
