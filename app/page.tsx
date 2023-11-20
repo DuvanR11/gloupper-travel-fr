@@ -19,7 +19,9 @@ const Home = async ({ searchParams }: HomeProps) => {
     return (
       <>
         <Navbar currentUser={currentUser}/>
-        <EmptyState showReset />
+        <div className="pb-20 pt-32">
+          <EmptyState showReset />
+        </div>
       </>
     );
   }
