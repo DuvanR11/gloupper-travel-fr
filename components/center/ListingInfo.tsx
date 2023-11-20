@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import { IconType } from "react-icons";
 
-import useCountries from "@/hooks/useCountries";
 import { SafeUser } from "@/app/types";
 import { 
   GiIsland,
@@ -34,9 +33,6 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
   locationValue,
   services
 }) => {
-  const { getByValue } = useCountries();
-
-  const coordinates = getByValue(locationValue)?.latlng
 
   return ( 
     <div className="col-span-4 flex flex-col gap-8">

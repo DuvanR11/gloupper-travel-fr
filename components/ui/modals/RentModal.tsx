@@ -7,16 +7,13 @@ import {
   SubmitHandler, 
   useForm
 } from 'react-hook-form';
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from "react";
 
 import useRentModal from '@/hooks/modal/useRentModal';
 
 import Modal from "./Modal";
-import Counter from "../inputs/Counter";
 import CategoryInput from '../inputs/CategoryInput';
-import CountrySelect from "../inputs/CountrySelect";
 import { categories } from '../navbar/Categories';
 import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
@@ -193,16 +190,10 @@ export const RentModal = () => {
           title="¿Dónde está ubicado tu lugar?"
           subtitle="¡Ayuda a los invitados a encontrarte!"
         />
-        {/* <CountrySelect 
-          value={location} 
-          onChange={(value) => setCustomValue('location', value)} 
-        />
-        <Map center={location?.latlng} /> */}
-
         <LocationSelects 
-        value={location}  
-        // onChange={(value) => setCustomValue('location', value)}
-        onChange={handleLocationChange}
+          value={location}  
+          // onChange={(value) => setCustomValue('location', value)}
+          onChange={handleLocationChange}
         />
       </div>
     );

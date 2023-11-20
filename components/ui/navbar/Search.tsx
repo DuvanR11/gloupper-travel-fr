@@ -5,7 +5,6 @@ import { useMemo } from 'react';
 import { BiSearch } from 'react-icons/bi';
 
 import useSearchModal from '@/hooks/modal/useSearchModal';
-import useCountries from '@/hooks/useCountries';
 
 const Search = () => {
   const searchModal = useSearchModal();
