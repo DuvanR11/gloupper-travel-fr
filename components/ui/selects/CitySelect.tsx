@@ -10,12 +10,12 @@ export type CitySelectValue = {
   latlng: string[],
 }
 
-interface CountrySelectProps {
+interface CitySelectProps {
   value?: CitySelectValue;
   onChange: (value: any) => void;
 }
 
-export const CitySelect: React.FC<CountrySelectProps> = ({
+export const CitySelect: React.FC<CitySelectProps> = ({
   value,
   onChange
 }) => {
