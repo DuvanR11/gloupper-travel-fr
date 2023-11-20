@@ -40,7 +40,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json(accommodation);
   } catch (error) {
-    // Manejar otros errores no previstos
     console.error("Error:", error);
     return NextResponse.error();
   }
