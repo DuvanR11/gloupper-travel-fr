@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 
-import getCurrentUser from "@/app/actions/getCurrentUser";
-import prisma from "@/app/libs/prismadb";
+import { getCurrentUser } from "@/app/actions/user";
+import prisma from "@/libs/prismadb";
 
 interface IParams {
-  listingId?: string;
+  centerId?: string;
 }
 
 export async function POST(
@@ -17,15 +17,15 @@ export async function POST(
     return NextResponse.error();
   }
 
-  const { listingId } = params;
+  const { centerId } = params;
 
-  if (!listingId || typeof listingId !== 'string') {
+  if (!centerId || typeof centerId !== 'string') {
     throw new Error('Invalid ID');
   }
 
   let favoriteIds = [...(currentUser.favoriteIds || [])];
 
-  favoriteIds.push(listingId);
+  favoriteIds.push(centerId);
 
   const user = await prisma.user.update({
     where: {
@@ -49,15 +49,15 @@ export async function DELETE(
     return NextResponse.error();
   }
 
-  const { listingId } = params;
+  const { centerId } = params;
 
-  if (!listingId || typeof listingId !== 'string') {
+  if (!centerId || typeof centerId !== 'string') {
     throw new Error('Invalid ID');
   }
 
   let favoriteIds = [...(currentUser.favoriteIds || [])];
 
-  favoriteIds = favoriteIds.filter((id) => id !== listingId);
+  favoriteIds = favoriteIds.filter((id) => id !== centerId);
 
   const user = await prisma.user.update({
     where: {

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import prisma from "@/app/libs/prismadb";
-import getCurrentUser from "@/app/actions/getCurrentUser";
+import prisma from "@/libs/prismadb";
+import { getCurrentUser } from "@/app/actions/user";
 
 export async function POST(request: Request) {
   try {
@@ -20,27 +20,19 @@ export async function POST(request: Request) {
       location,
       imageSrc,
       images,
-      price,
-      guestCount,
-      roomCount,
-      bathroomCount,
     } = body;
 
-    console.log(location)
-    const listing = await prisma.listing.create({
+    
+    const listing = await prisma.center.create({
       data: {
         title,
         description,
         services,
         category,
-        departamentValue: location,
-        locationValue: location,
+        departament: 'Huila',
+        city: location,
         imageSrc,
         images,
-        price,
-        guestCount,
-        roomCount,
-        bathroomCount,
         user: {
           connect: {
             id: currentUser.id,

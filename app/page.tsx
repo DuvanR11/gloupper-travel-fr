@@ -1,55 +1,55 @@
-import Container from "@/app/components/Container";
-import ListingCard from "@/app/components/listings/ListingCard";
-import EmptyState from "@/app/components/EmptyState";
+import Container from "@/components/layouts/Container";
+import ListingCard from "@/components/center/cards/ListingCard";
+import EmptyState from "@/components/ui/loads/EmptyState";
 
-import getListings, { 
-  IListingsParams
-} from "@/app/actions/getListings";
-import getCurrentUser from "@/app/actions/getCurrentUser";
-import ClientOnly from "./components/ClientOnly";
+import { getListings } from "./actions/center";
+import { getCurrentUser } from '@/app/actions/user'
+import Navbar from "@/components/ui/navbar/Navbar";
+import { IParamsCenter } from "@/interfaces";
 
 interface HomeProps {
-  searchParams: IListingsParams
+  searchParams: IParamsCenter
 };
 
 const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
-
+  
   if (listings.length === 0) {
     return (
-      <ClientOnly>
-        <EmptyState showReset />
-      </ClientOnly>
+      <EmptyState showReset />
     );
   }
 
   return (
-    <ClientOnly>
-      <Container>
-        <div 
-          className="
-            pt-24
-            grid 
-            grid-cols-1 
-            sm:grid-cols-2 
-            md:grid-cols-3 
-            lg:grid-cols-3
-            xl:grid-cols-4
-            2xl:grid-cols-5
-            gap-6
-          "
-        >
-          {listings.map((listing: any) => (
-            <ListingCard
-              currentUser={currentUser}
-              key={listing.id}
-              data={listing}
-            />
-          ))}
-        </div>
-      </Container>
-    </ClientOnly>
+    <>
+      <Navbar currentUser={currentUser}/>
+      <div className="pb-20 pt-28">
+        <Container>
+          <div 
+            className="
+              pt-24
+              grid 
+              grid-cols-1 
+              sm:grid-cols-2 
+              md:grid-cols-3 
+              lg:grid-cols-3
+              xl:grid-cols-4
+              2xl:grid-cols-5
+              gap-6
+            "
+          >
+            {listings.map((listing: any) => (
+              <ListingCard
+                currentUser={currentUser}
+                key={listing.id}
+                data={listing}
+              />
+            ))}
+          </div>
+        </Container>
+      </div>
+    </>
   )
 }
 
