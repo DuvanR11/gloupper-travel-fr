@@ -24,7 +24,7 @@ enum STEPS {
   MULTIMEDIA = 2,
 }
 
-export const TourModal = ({ tour }: any) => {
+export const TourModal = ({ tour, center }: any) => {
   const router = useRouter();
   const tourModal = useTourModal();
 
@@ -40,6 +40,7 @@ export const TourModal = ({ tour }: any) => {
     reset,
   } = useForm<FieldValues>({
     defaultValues: {
+      centerId: center.id,
       name: tour?.name || '',
       description: tour?.description || '',
       image: tour?.image || '',
@@ -50,6 +51,7 @@ export const TourModal = ({ tour }: any) => {
 
   useEffect(() => {
     reset({
+      centerId: center.id,
       name: tour?.name || '',
       description: tour?.description || '',
       image: tour?.image || '',

@@ -13,6 +13,7 @@ export async function POST(request: Request) {
 
     const body = await request.json();
     const {
+      centerId,
       name,
       slug,
       description,
@@ -31,7 +32,7 @@ export async function POST(request: Request) {
         images,
         center: {
           connect: {
-            id: '652efb576f68c9b7710d72d1',
+            id:  centerId,
           },
         },
       },

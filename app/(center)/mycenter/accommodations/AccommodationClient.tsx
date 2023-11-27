@@ -15,9 +15,10 @@ import { useAccommodationModal } from '@/hooks/modal/center';
 
 interface AccommodationClientProps {
   accommodations?: any | null,
+  center?: any | null,
 }
   
-const AccommodationClient: FC<AccommodationClientProps> = ({ accommodations }) => {
+const AccommodationClient: FC<AccommodationClientProps> = ({ accommodations, center }) => {
 
   const router = useRouter();
 
@@ -132,7 +133,7 @@ const AccommodationClient: FC<AccommodationClientProps> = ({ accommodations }) =
         </Grid>
       </Grid>
 
-      <AccommodationModal accommodation={accommodation}/>
+      <AccommodationModal accommodation={accommodation} center={center}/>
       <RequiereAlert onSubmit={ handleDelete } />
     </>
   )
