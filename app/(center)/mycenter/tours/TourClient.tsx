@@ -15,9 +15,10 @@ import { TourModal } from '@/components/center/modals';
 
 interface TourClientProps {
   tours?: any | null,
+  center?: any | null
 }
   
-const TourClient: FC<TourClientProps> = ({ tours }) => {
+const TourClient: FC<TourClientProps> = ({ tours, center }) => {
 
   const router = useRouter();
 
@@ -132,7 +133,7 @@ const TourClient: FC<TourClientProps> = ({ tours }) => {
         </Grid>
       </Grid>
 
-      <TourModal tour={tour}/>
+      <TourModal tour={tour} center={center}/>
       <RequiereAlert onSubmit={ handleDelete } />
     </>
   )

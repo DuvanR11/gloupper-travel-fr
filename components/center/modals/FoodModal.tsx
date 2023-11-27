@@ -30,7 +30,7 @@ function convertToSlug(frase: string, ) {
     .replace(/[^\w-]+/g, '');
 }
 
-const FoodModal = ({ food }: any) => {
+const FoodModal = ({ food, center }: any) => {
   const router = useRouter();
   const foodModal = useFoodModal();
 
@@ -46,6 +46,7 @@ const FoodModal = ({ food }: any) => {
     reset,
   } = useForm<FieldValues>({
     defaultValues: {
+      centerId: center.id,
       name: food?.name || '',
       description: food?.description || '',
       image: food?.image || '',
@@ -56,6 +57,7 @@ const FoodModal = ({ food }: any) => {
 
   useEffect(() => {
     reset({
+      centerId: center.id,
       name: food?.name || '',
       description: food?.description || '',
       image: food?.image || '',
@@ -92,7 +94,7 @@ const FoodModal = ({ food }: any) => {
 
     const axiosRequest = food
         ? axios.put(`/api/food/${food.id}`, data)
-        : axios.post('/api/food', data);
+        : axios.post(`/api/food` , data);
 
     axiosRequest
         .then(() => {

@@ -15,9 +15,10 @@ import { AttractionModal } from '@/components/center/modals';
 
 interface FoodClientProps {
     attractions?: any | null,
+    center?: any | null;
 }
   
-const AttractionsClient: FC<FoodClientProps> = ({ attractions }) => {
+const AttractionsClient: FC<FoodClientProps> = ({ attractions, center }) => {
   const router = useRouter();
 
   const [listFood, setListFood] = useState(attractions)
@@ -131,7 +132,7 @@ const AttractionsClient: FC<FoodClientProps> = ({ attractions }) => {
         </Grid>
       </Grid>
 
-      <AttractionModal attraction={attraction}/>
+      <AttractionModal attraction={attraction} center={center}/>
       <RequiereAlert onSubmit={ handleDelete } />
     </>
   )

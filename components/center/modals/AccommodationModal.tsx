@@ -24,7 +24,7 @@ enum STEPS {
   MULTIMEDIA = 2,
 }
 
-export const AccommodationModal = ({ accommodation }: any) => {
+export const AccommodationModal = ({ accommodation, center }: any) => {
   const router = useRouter();
   const accommodationModal = useAccommodationModal();
 
@@ -40,6 +40,7 @@ export const AccommodationModal = ({ accommodation }: any) => {
     reset,
   } = useForm<FieldValues>({
     defaultValues: {
+      centerId: center.id,
       name: accommodation?.name || '',
       description: accommodation?.description || '',
       image: accommodation?.image || '',
@@ -50,6 +51,7 @@ export const AccommodationModal = ({ accommodation }: any) => {
 
   useEffect(() => {
     reset({
+      centerId: center.id,
       name: accommodation?.name || '',
       description: accommodation?.description || '',
       image: accommodation?.image || '',

@@ -26,7 +26,7 @@ const TourPage = async ({ searchParams }: TourPageProps) => {
     />
   }
 
-  return ( <TourClient tours={tours}/> )
+  return ( <TourClient tours={tours} center={center[0]}/> )
 }
 
 export default TourPage

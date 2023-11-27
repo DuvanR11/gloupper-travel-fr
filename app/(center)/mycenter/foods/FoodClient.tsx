@@ -15,9 +15,10 @@ import { useRouter } from 'next/navigation';
 
 interface FoodClientProps {
   foods?: any | null,
+  center?: any;
 }
   
-const FoodClient: FC<FoodClientProps> = ({ foods }) => {
+const FoodClient: FC<FoodClientProps> = ({ foods, center }) => {
   const router = useRouter();
 
   const [listFood, setListFood] = useState(foods)
@@ -131,7 +132,7 @@ const FoodClient: FC<FoodClientProps> = ({ foods }) => {
         </Grid>
       </Grid>
 
-      <FoodModal food={food}/>
+      <FoodModal food={food} center={center}/>
       <RequiereAlert onSubmit={ handleDelete } />
     </>
   )
