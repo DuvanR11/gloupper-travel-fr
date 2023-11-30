@@ -12,36 +12,18 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const {
-      centerId,
-      name,
-      slug,
-      description,
-      price,
-      image,
-      images,
-    } = body;
+    const { walletId, amount, type } = body;
     
-    const tour = await prisma.tour.create({
+    const transaction = await prisma.transaction.create({
       data: {
-        name,
-        slug,
-        description,
-        price,
-        image,
-        images,
-        center: {
-          connect: {
-            id:  centerId,
-          },
-        },
+        walletId,
+        amount,
+        type,
       },
     });
-    
 
-    return NextResponse.json(tour);
+    return NextResponse.json(transaction);
   } catch (error) {
-    // Manejar otros errores no previstos
     console.error("Error:", error);
     return NextResponse.error();
   }

@@ -27,7 +27,7 @@ const AttractionsPage = async ({ searchParams }: AttractionsPageProps) => {
     />
   }
 
-  return ( <AttractionsClient attractions={attractions}/> )
+  return ( <AttractionsClient attractions={attractions} center={center[0]}/> )
 }
 
 export default AttractionsPage

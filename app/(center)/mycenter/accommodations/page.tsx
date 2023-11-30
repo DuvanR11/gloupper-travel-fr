@@ -26,7 +26,7 @@ const AccommodationPage = async ({ searchParams }: TourPageProps) => {
     />
   }
 
-  return ( <AccommodationClient accommodations={accommodations}/> )
+  return ( <AccommodationClient accommodations={accommodations} center={center[0]}/> )
 }
 
 export default AccommodationPage

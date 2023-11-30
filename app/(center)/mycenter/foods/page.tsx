@@ -25,7 +25,7 @@ const FoodPage = async ({ searchParams }: FoodPageProps) => {
     />
   }
 
-  return ( <FoodClient foods={foods}/> )
+  return ( <FoodClient foods={foods} center={center[0]}/> )
 }
 
 export default FoodPage

@@ -3,45 +3,27 @@ import { NextResponse } from "next/server";
 import prisma from "@/libs/prismadb";
 import { getCurrentUser } from "@/app/actions/user";
 
-
-export async function POST(request: Request ) {
+export async function POST(request: Request) {
   try {
     const currentUser = await getCurrentUser();
-
 
     if (!currentUser) {
       return NextResponse.error();
     }
 
     const body = await request.json();
-    const {
-      centerId,
-      name,
-      slug,
-      description,
-      price,
-      image,
-      images,
-    } = body;
+    const { centerId } = body;
     
-    const food = await prisma.food.create({
+    const wallet = await prisma.wallet.create({
       data: {
-        name,
-        slug,
-        description,
-        price,
-        image,
-        images,
-        center: {
-          connect: {
-            id: centerId,
-          },
-        },
+        centerId,
+        balance: 0
       },
     });
     
+    console.log(wallet)
 
-    return NextResponse.json(food);
+    return NextResponse.json(wallet);
   } catch (error) {
     // Manejar otros errores no previstos
     console.error("Error:", error);

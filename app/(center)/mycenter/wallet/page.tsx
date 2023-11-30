@@ -1,13 +1,13 @@
-import { getListings, getTours } from '@/app/actions/center';
+import { getListings, getTours, getWalletById } from '@/app/actions/center';
 import { getCurrentUser } from '@/app/actions/user'
 import EmptyState from '@/components/ui/loads/EmptyState';
-import TourClient from './TourClient';
 import { IParamsCenter } from '@/interfaces';
+import WalletClient from './WalletClient';
 
 
-interface TourPageProps { searchParams: IParamsCenter };
+interface WalletProps { searchParams: IParamsCenter };
 
-const TourPage = async ({ searchParams }: TourPageProps) => {
+const WalletPage = async ({ searchParams }: WalletProps) => {
     const currentUser = await getCurrentUser()
     if (!currentUser) {
         return <EmptyState
@@ -17,6 +17,8 @@ const TourPage = async ({ searchParams }: TourPageProps) => {
     }
     
     const center = await getListings({ centerId: searchParams.centerId })
+    const wallet = await getWalletById({ centerId: center[0]?.id })
+
     const tours = await getTours({ centerId: center[0]?.id })
 
   if (!center) {
@@ -26,7 +28,7 @@ const TourPage = async ({ searchParams }: TourPageProps) => {
     />
   }
 
-  return ( <TourClient tours={tours} center={center[0]}/> )
+  return ( <WalletClient tours={tours} center={center[0]}/> )
 }
 
-export default TourPage
+export default WalletPage

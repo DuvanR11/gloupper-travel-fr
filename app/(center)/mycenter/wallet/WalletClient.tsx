@@ -13,12 +13,12 @@ import { useRouter } from 'next/navigation';
 import { useTourModal } from '@/hooks/modal/center';
 import { TourModal } from '@/components/center/modals';
 
-interface TourClientProps {
+interface WalletClientProps {
   tours?: any | null,
   center?: any | null
 }
   
-const TourClient: FC<TourClientProps> = ({ tours, center }) => {
+const WalletClient: FC<WalletClientProps> = ({ tours, center }) => {
 
   const router = useRouter();
 
@@ -28,6 +28,11 @@ const TourClient: FC<TourClientProps> = ({ tours, center }) => {
 
   const tourModal = useTourModal();
   const requireAlert = useRequireAlert();
+
+  const handleCreate = async() => {
+    const { data } = await axios.post(`/api/wallet`, {centerId: '652efb576f68c9b7710d72d1'})
+    console.log(data)
+   };
 
   const handleEdit = async(id: any) => {
    const { data } = await axios.get(`/api/tour/${id}`)
@@ -108,7 +113,7 @@ const TourClient: FC<TourClientProps> = ({ tours, center }) => {
         <Grid item>
           <Button 
             variant='outlined' 
-            onClick={ () => { tourModal.onOpen(), setTour(null) } }
+            onClick={ () => { handleCreate() } }
           >
             Agregar
           </Button>
@@ -139,4 +144,4 @@ const TourClient: FC<TourClientProps> = ({ tours, center }) => {
   )
 }
 
-export default TourClient
+export default WalletClient

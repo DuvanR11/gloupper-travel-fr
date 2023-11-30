@@ -43,6 +43,11 @@ const routes = [
         icon: ''
     },
     {
+        name: 'Billetera',
+        url:  '/mycenter/wallet',
+        icon: ''
+    },
+    {
         name: 'Notificaciones',
         url: '/mycenter/notifications',
         icon: ''
