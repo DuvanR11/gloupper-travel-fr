@@ -28,6 +28,7 @@ model User {
   centros Center[]
   reservations Reservation[]
   comments Comment[]
+  reviews Reviews[]
 }
 
 model Account {
@@ -78,18 +79,41 @@ model Center {
   departament    String
   city           String
   images         String[]
-
+  wallet         Wallet?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   reservations Reservation[]
-  comments Comment[]
   accommodations Accommodation[]
   foods Food[]
   tours Tour[]
   attractions Attraction[]
+  comments Comment[]
+  reviews Reviews[]
+  
 }
+
+model Wallet {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  balance  Int
+
+  centerId String   @unique @db.ObjectId
+  center   Center?  @relation(fields: [centerId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Transaction {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  walletId  String    @db.ObjectId
+  amount    Float
+  type      String
+  createdAt DateTime @default(now())
+}
+
 
 model Accommodation {
   id           String @id @default(auto()) @map("_id") @db.ObjectId
@@ -164,8 +188,20 @@ model Comment {
   user      User @relation(fields: [userId], references: [id])
   centerId  String @db.ObjectId 
   center    Center @relation(fields: [centerId], references: [id], onDelete: Cascade)
-  text      String
-  date      DateTime
+  description      String
+  createdAt   DateTime @default(now())
+
+  @@index([userId, centerId])
+}
+
+model Reviews {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String @db.ObjectId
+  user      User @relation(fields: [userId], references: [id])
+  centerId  String @db.ObjectId 
+  center    Center @relation(fields: [centerId], references: [id], onDelete: Cascade)
+  description      String
+  createdAt   DateTime @default(now())
 
   @@index([userId, centerId])
 }

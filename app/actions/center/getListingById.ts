@@ -25,6 +25,7 @@ export async function getListingById(
         foods: true,
         tours: true,
         attractions: true,
+        reviews: true
       }
     });
 

@@ -72,7 +72,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
           </div>
         </div>
       <hr />
-      <Map center={[2, 70]} />
+      {/* <Map center={[2, 70]} /> */}
     </div>
    );
 }

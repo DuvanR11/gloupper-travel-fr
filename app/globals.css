@@ -8,6 +8,10 @@ body,
   height: 100%;
 }
 
+.max-w-screen {
+  max-width: 1124px !important;
+}
+
 .leaflet-bottom,
 .leaflet-control,
 .leaflet-pane,
