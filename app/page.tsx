@@ -6,6 +6,7 @@ import { getListings } from "./actions/center";
 import { getCurrentUser } from '@/app/actions/user'
 import Navbar from "@/components/ui/navbar/Navbar";
 import { IParamsCenter } from "@/interfaces";
+import { FooterClient } from "@/components/client/layout";
 
 interface HomeProps {
   searchParams: IParamsCenter
@@ -29,7 +30,7 @@ const Home = async ({ searchParams }: HomeProps) => {
   return (
     <>
       <Navbar currentUser={currentUser}/>
-      <div className="pb-20 pt-28">
+      <div className="pb-10 pt-28">
         <Container>
           <div 
             className="
@@ -54,6 +55,7 @@ const Home = async ({ searchParams }: HomeProps) => {
           </div>
         </Container>
       </div>
+      <FooterClient/>
     </>
   )
 }
