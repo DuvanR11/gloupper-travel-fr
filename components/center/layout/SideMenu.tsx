@@ -120,7 +120,7 @@ export const SideMenu = () => {
                                     icon={ <FaHome className="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"/> }>
                                     {
                                         subRoutes.map((subRoute, index) => (
-                                            <li>
+                                            <li key={ index }>
                                                 <NextLink href={`${subRoute.url}?centerId=${centerId}`} passHref legacyBehavior >
                                                     <Link 
                                                     underline="none" 
