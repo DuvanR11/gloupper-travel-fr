@@ -10,17 +10,17 @@ const Search = () => {
   const searchModal = useSearchModal();
   const params = useSearchParams();
 
-  const  locationValue = params?.get('locationValue'); 
+  const  city = params?.get('city'); 
   const  category = params?.get('category'); 
   const  services = params?.get('services'); 
 
   const locationLabel = useMemo(() => {
-    if (locationValue) {
-      return locationValue
+    if (city) {
+      return city
     }
 
     return 'Viaja por el Huila';
-  }, [locationValue]);
+  }, [city]);
 
   const categoryLabel = useMemo(() => {
     if (category) {

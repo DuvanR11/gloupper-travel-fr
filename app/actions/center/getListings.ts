@@ -34,7 +34,7 @@ export async function getListings(
     }
 
     if (locationValue) {
-      query.locationValue = locationValue;
+      query.city = locationValue;
     }
 
     const listings = await prisma.center.findMany({

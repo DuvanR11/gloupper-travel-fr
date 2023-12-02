@@ -1,6 +1,6 @@
 
 import { getCurrentUser } from '@/app/actions/user'
-import { Navbar, SideMenu } from "@/components/center/layout";
+import { Footer, Navbar, SideMenu } from "@/components/center/layout";
 
 export default async function DashboardLayout({
     children
@@ -11,12 +11,16 @@ export default async function DashboardLayout({
     const currentUser = await getCurrentUser();
     return (
       <>
-        <Navbar currentUser={ currentUser }/>
-        <SideMenu/>
-        <div className="p-4  h-screen sm:ml-64 bg-slate-100">
-          <div className="p-4 mt-14">
-            {children} 
+        <Navbar/>
+        <div className="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+
+          <SideMenu/>
+
+          <div className="relative p-5 w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+              { children }
+              <Footer/>
           </div>
+
         </div>
       </>
     )
