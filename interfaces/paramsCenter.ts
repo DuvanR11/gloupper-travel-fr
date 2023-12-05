@@ -3,8 +3,8 @@ export interface IParamsCenter {
     userId?:         string;
     walletId?:       string;
     slug?:           string;
-    page?:           string;
-    size?:           string
+    page?:           number;
+    pageSize?:       number
     locationValue?:  string;
     category?:       string;
     services?:       string[]

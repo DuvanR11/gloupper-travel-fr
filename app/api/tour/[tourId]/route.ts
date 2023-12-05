@@ -21,7 +21,7 @@ export async function GET(
 
   const listing = await prisma.tour.findFirst({
     where: {
-      slug: tourId,
+      id: tourId,
     }
   });
 
@@ -41,7 +41,7 @@ export async function DELETE(
   
     const food = await prisma.tour.deleteMany({
       where: {
-        slug: tourId,
+        id: tourId,
       }
     });
     return NextResponse.json(food);

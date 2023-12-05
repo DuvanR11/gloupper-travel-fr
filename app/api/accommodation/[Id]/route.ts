@@ -21,7 +21,7 @@ export async function GET(
 
   const accommodation = await prisma.accommodation.findFirst({
     where: {
-      slug: Id,
+      id: Id,
     }
   });
 
@@ -41,7 +41,7 @@ export async function DELETE(
   
     const accommodation = await prisma.accommodation.deleteMany({
       where: {
-        slug: Id,
+        id: Id,
       }
     });
     return NextResponse.json(accommodation);

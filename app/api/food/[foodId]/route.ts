@@ -21,7 +21,7 @@ export async function GET(
 
   const listing = await prisma.food.findFirst({
     where: {
-      slug: foodId,
+      id: foodId,
     }
   });
 
@@ -41,7 +41,7 @@ export async function DELETE(
   
     const food = await prisma.food.deleteMany({
       where: {
-        slug: foodId,
+        id: foodId,
       }
     });
     console.log(food)
@@ -68,6 +68,7 @@ export async function DELETE(
       images,
      } = body;
   
+     console.log('lasalsl ', foodId)
     const updateFood = await prisma.food.update({
       where: {
         id: foodId,
