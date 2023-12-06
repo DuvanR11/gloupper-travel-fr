@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef, ReactNode } from 'react';
 interface DropdownProps {
   buttonText: string;
   children: any;
-  icon: ReactNode;
+  icon?: ReactNode;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({ buttonText, icon, children }) => {

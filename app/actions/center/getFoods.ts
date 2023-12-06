@@ -12,7 +12,7 @@ export async function getFoods(
 
     if (!currentUser) { return [] }
 
-    const { centerId } = params;
+    const { centerId, page = 1, pageSize = 5 } = params;
 
     let query: any = {};
 
@@ -22,9 +22,8 @@ export async function getFoods(
     
     const foods = await prisma.food.findMany({
       where: query,
-    //   orderBy: {
-    //     createdAt: 'desc'
-    //   }
+      // skip: (page - 1) * pageSize,
+      // take: pageSize,
     });
 
     const safeFoods = foods.map((food) => ({
