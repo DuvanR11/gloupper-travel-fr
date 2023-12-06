@@ -125,8 +125,8 @@ export const TourModal = ({ tour, center }: any) => {
   let bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="La mejor gastronomia"
-        subtitle="Lo mejor para tus clientes"
+        title="Paquetes todo incluido"
+        subtitle="La mejor desición para tus usuarios"
       />
         <Input
           id="name"
@@ -159,7 +159,7 @@ export const TourModal = ({ tour, center }: any) => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Añade una foto principal de tu lugar"
+          title="Añade una foto principal de tu paquete"
           subtitle="Esta sera la primera impresion de tu espacio"
         />
         <ImageUpload

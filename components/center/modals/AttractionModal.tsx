@@ -92,7 +92,7 @@ export const AttractionModal = ({ attraction, center }: any) => {
 
     axiosRequest
         .then(() => {
-            toast.success('Añadido a tu menú');
+            toast.success('Añadido con exito');
             router.refresh();
             reset();
             setStep(STEPS.INFORMATION);
@@ -125,8 +125,8 @@ export const AttractionModal = ({ attraction, center }: any) => {
   let bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="La mejor gastronomia"
-        subtitle="Lo mejor para tus clientes"
+        title="Atracción"
+        subtitle="La mejor recreación para tus usuarios"
       />
         <Input
           id="name"
@@ -159,7 +159,7 @@ export const AttractionModal = ({ attraction, center }: any) => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Añade una foto principal de tu lugar"
+          title="Añade una foto principal de tu atracción"
           subtitle="Esta sera la primera impresion de tu espacio"
         />
         <ImageUpload
@@ -175,7 +175,7 @@ export const AttractionModal = ({ attraction, center }: any) => {
       <div className="flex flex-col gap-8">
         <Heading
           title="Añade mas fotos para tus invitados"
-          subtitle="¡Muestra a los invitados cómo se ve tu lugar!"
+          subtitle="¡Muestra a los invitados cómo se ve tu atracción!"
         />
         <ImagesUploads
            onChange={(value) => setCustomValue('images', value)}
