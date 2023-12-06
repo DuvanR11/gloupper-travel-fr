@@ -34,10 +34,12 @@ const PropertiesPage = async () => {
   return (
     <ClientOnly>
       <Navbar currentUser={currentUser}/>
-      <PropertiesClient
-        listings={listings}
-        currentUser={currentUser}
-      />
+      <div className="pb-10 pt-28">
+        <PropertiesClient
+          listings={listings}
+          currentUser={currentUser}
+        />
+      </div>
     </ClientOnly>
   );
 }

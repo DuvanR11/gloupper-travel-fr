@@ -11,7 +11,7 @@ export default async function DashboardLayout({
     const currentUser = await getCurrentUser();
     return (
       <>
-        <Navbar/>
+        <Navbar currentUser={ currentUser }/>
         <div className="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
 
           <SideMenu/>

@@ -125,8 +125,8 @@ export const AccommodationModal = ({ accommodation, center }: any) => {
   let bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="La mejor gastronomia"
-        subtitle="Lo mejor para tus clientes"
+        title="El mejor hospedaje"
+        subtitle="Comodidad para tus usuarios"
       />
         <Input
           id="name"
@@ -175,7 +175,7 @@ export const AccommodationModal = ({ accommodation, center }: any) => {
       <div className="flex flex-col gap-8">
         <Heading
           title="Añade mas fotos para tus invitados"
-          subtitle="¡Muestra a los invitados cómo se ve tu lugar!"
+          subtitle="¡Muestra a los invitados cómo se ve tu hospedaje!"
         />
         <ImagesUploads
            onChange={(value) => setCustomValue('images', value)}

@@ -110,14 +110,17 @@ const Modal: React.FC<ModalProps> = ({
               h-full
               lg:h-auto
               md:h-auto
-              border-0 
               rounded-lg 
               shadow-lg 
               relative 
               flex 
               flex-col 
               w-full 
-              bg-white 
+              border
+              bg-white
+              border-gray-200 
+              dark:bg-gray-800 
+              dark:border-gray-700
               outline-none 
               focus:outline-none
             "
@@ -144,9 +147,9 @@ const Modal: React.FC<ModalProps> = ({
                   "
                   onClick={handleClose}
                 >
-                  <IoMdClose size={18} />
+                  <IoMdClose size={18} className="dark:text-white"/>
                 </button>
-                <div className="text-lg font-semibold">
+                <div className="text-lg font-semibold dark:text-white">
                   {title}
                 </div>
               </div>

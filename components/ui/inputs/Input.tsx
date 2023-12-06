@@ -54,6 +54,10 @@ const Input: React.FC<InputProps> = ({
           pt-6 
           font-light 
           bg-white 
+          hover:bg-gray-100
+          dark:bg-gray-800 
+          dark:text-white 
+          dark:hover:bg-gray-700 
           border-2
           rounded-md
           outline-none
@@ -61,7 +65,7 @@ const Input: React.FC<InputProps> = ({
           disabled:opacity-70
           disabled:cursor-not-allowed
           ${formatPrice ? 'pl-9' : 'pl-4'}
-          ${errors[id] ? 'border-rose-500' : 'border-neutral-300'}
+          ${errors[id] ? 'border-rose-500' : 'border-neutral-300 dark:border-gray-600 '}
           ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}
         `}
       />

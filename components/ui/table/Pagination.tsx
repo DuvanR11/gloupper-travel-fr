@@ -48,11 +48,11 @@ export const Pagination = ({ currentPage, totalPages, setCurrentPage }: any) => 
           <li key={pageNumber}>
             <button
               onClick={() => setCurrentPage(pageNumber)}
-              className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border ${
+              className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border ${
                 currentPage === pageNumber
-                  ? 'border-blue-300 bg-blue-50 text-blue-600'
-                  : 'border-gray-300'
-              } hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
+                  ? 'bg-gray-100 text-blue-600 dark:bg-gray-700'
+                  : 'border-gray-300 bg-white dark:bg-gray-800'
+              } hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
             >
               {pageNumber}
             </button>
@@ -61,7 +61,7 @@ export const Pagination = ({ currentPage, totalPages, setCurrentPage }: any) => 
         <li>
           <button
             onClick={() => setCurrentPage((prev: number) => Math.min(prev + 1, totalPages))}
-            className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-l-0 border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <span className="sr-only">Next</span>
             <svg

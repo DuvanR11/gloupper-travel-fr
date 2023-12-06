@@ -1,8 +1,6 @@
 'use client';
 
-import { toast } from "react-hot-toast";
-import axios from "axios";
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 import { SafeListing, SafeUser } from "@/app/types";
@@ -21,22 +19,9 @@ const PropertiesClient: FC<PropertiesClientProps> = ({
   currentUser
 }) => {
   const router = useRouter();
-  const [deletingId, setDeletingId] = useState('');
 
-  const onDelete = useCallback((id: string) => {
-    setDeletingId(id);
-
-    axios.delete(`/api/listings/${id}`)
-    .then(() => {
-      toast.success('Listing deleted');
-      router.refresh();
-    })
-    .catch((error) => {
-      toast.error(error?.response?.data?.error)
-    })
-    .finally(() => {
-      setDeletingId('');
-    })
+  const hanldeAdmin = useCallback((id: string) => {
+    router.push(`/mycenter?centerId=${id}`)
   }, [router]);
 
 
@@ -48,7 +33,7 @@ const PropertiesClient: FC<PropertiesClientProps> = ({
       />
       <div 
         className="
-          mt-10
+          mt-8
           grid 
           grid-cols-1 
           sm:grid-cols-2 
@@ -64,9 +49,8 @@ const PropertiesClient: FC<PropertiesClientProps> = ({
             key={listing.id}
             data={listing}
             actionId={listing.id}
-            onAction={onDelete}
-            disabled={deletingId === listing.id}
-            actionLabel="Eliminar Propiedad"
+            onAction={hanldeAdmin}
+            actionLabel="Administrar"
             currentUser={currentUser}
           />
         ))}
