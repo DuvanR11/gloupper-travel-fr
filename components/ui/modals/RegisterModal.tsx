@@ -63,8 +63,8 @@ export const RegisterModal= () => {
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="Welcome to Airbnb"
-        subtitle="Create an account!"
+        title="Bienvenido a gloupper"
+        subtitle="Crear tu cuenta"
       />
       <Input
         id="email"
@@ -129,7 +129,7 @@ export const RegisterModal= () => {
     <Modal
       disabled={isLoading}
       isOpen={registerModal.isOpen}
-      title="Register"
+      title="Resgristate"
       actionLabel="Continue"
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
