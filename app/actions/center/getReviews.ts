@@ -7,7 +7,6 @@ export async function getReviews(
 ) {
   try {
     const { centerId } = params;
-    console.log(centerId)
     const reviews = await prisma.reviews.findMany({
         where: {
           centerId: centerId,

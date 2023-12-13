@@ -66,9 +66,8 @@ export async function DELETE(
       price,
       image,
       images,
-     } = body;
+    } = body;
   
-     console.log('lasalsl ', foodId)
     const updateFood = await prisma.food.update({
       where: {
         id: foodId,

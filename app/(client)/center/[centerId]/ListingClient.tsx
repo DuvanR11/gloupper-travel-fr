@@ -21,6 +21,7 @@ import Heading from "@/components/ui/headers/Heading";
 import CenterReview from "@/components/center/CenterReview";
 import { ReviewModal } from "@/components/center/modals";
 import { useReviewModal } from "@/hooks/modal/center";
+import { Carousel } from "@/components/ui/swipper";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -33,6 +34,7 @@ interface ListingClientProps {
   listing: any & { //SafeListing
     user: SafeUser;
   };
+  interesting: any;
   reviews?: any | null;
   currentUser?: SafeUser | null;
 }
@@ -41,6 +43,7 @@ const Dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabados', 'D
 
 const ListingClient: React.FC<ListingClientProps> = ({
   listing,
+  interesting,
   reservations = [],
   currentUser,
   reviews
@@ -236,7 +239,21 @@ const ListingClient: React.FC<ListingClientProps> = ({
               <br />
               <CenterReview reviews={ reviews }/>
             </div>
+            <br />
           </div>
+    
+            <hr />
+            <br />
+            {/* Section view mas */}
+            <Heading
+                title='Estos podrian initeresarte'
+                subtitle='Cerca de tu interes'
+            />
+            <div className="h-74">
+              <Carousel data={ interesting }/>
+            </div>  
+            <br />
+            <hr /> 
         </div>
       </div>
 
