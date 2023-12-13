@@ -32,7 +32,6 @@ const WalletClient: FC<WalletClientProps> = ({ tours, center }) => {
 
   const handleCreate = async() => {
     const { data } = await axios.post(`/api/wallet`, {centerId: '652efb576f68c9b7710d72d1'})
-    console.log(data)
    };
 
   const handleDelete = () => {

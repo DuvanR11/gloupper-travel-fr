@@ -24,8 +24,6 @@ const AccountClient: FC<AccountClientProps> = ({
 }) => {
 
   const router = useRouter();
-  
-  console.log(center) 
 
   const { register: registerGeneral, handleSubmit: handleSubmitGeneral, formState: { errors: errorsGeneral } } = useForm<FieldValues>({
     defaultValues: {

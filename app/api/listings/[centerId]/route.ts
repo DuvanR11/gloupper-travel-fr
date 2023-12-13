@@ -47,9 +47,8 @@ export async function PUT(request: Request,
     departament,
     city,
     images,
-   } = body;
+  } = body;
 
-   console.log('Nuevo ----------', images)
 
   const UpdateCenter = await prisma.center.update({
     where: {

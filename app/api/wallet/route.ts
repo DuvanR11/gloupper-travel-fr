@@ -21,7 +21,6 @@ export async function POST(request: Request) {
       },
     });
     
-    console.log(wallet)
 
     return NextResponse.json(wallet);
   } catch (error) {
