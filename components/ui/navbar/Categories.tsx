@@ -1,89 +1,10 @@
 'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { TbBeach, TbMountain, TbPool } from 'react-icons/tb';
-import { 
-  GiBarn, 
-  GiBoatFishing, 
-  GiCactus, 
-  GiJourney,
-  GiCastle, 
-  GiCaveEntrance, 
-  GiForestCamp, 
-  GiIsland,
-  GiWindmill,
-  GiKneeling 
-} from 'react-icons/gi';
-import { FaSkiing } from 'react-icons/fa';
-import { BsSnow } from 'react-icons/bs';
-import { IoDiamond } from 'react-icons/io5';
-import { MdOutlineVilla } from 'react-icons/md';
 
 import CategoryBox from "../../CategoryBox";
 import Container from '../../layouts/Container';
-
-export const categories = [
-  {
-    label: 'Miradores',
-    icon: TbMountain,
-    description: 'Miradores',
-  },
-  {
-    label: 'Recreacionales',
-    icon: GiWindmill,
-    description: 'Recreacionales',
-  },
-  {
-    label: 'Ríos',
-    icon: MdOutlineVilla,
-    description: 'Ríos'
-  },
-  {
-    label: 'Quebradas',
-    icon: TbBeach,
-    description: 'Quebradas'
-  },
-  {
-    label: 'Cascadas',
-    icon: TbPool,
-    description: 'Cascadas'
-  },
-  {
-    label: 'Parques',
-    icon: GiIsland,
-    description: 'Parques'
-  },
-  {
-    label: 'Cuevas',
-    icon: GiBoatFishing,
-    description: 'Cuevas'
-  },
-  {
-    label: 'Senderos',
-    icon: GiJourney,
-    description: 'Senderos'
-  },
-  {
-    label: 'Santuarios',
-    icon: GiKneeling,
-    description: 'Santuarios'
-  },
-  {
-    label: 'Museos',
-    icon: GiCastle,
-    description: 'Museos'
-  },
-  {
-    label: 'Camping',
-    icon: GiForestCamp,
-    description: 'Camping'
-  },
-  {
-    label: 'Hotel',
-    icon: MdOutlineVilla,
-    description: 'Hotel'
-  },
-]
+import { categories } from '@/utils';
 
 const Categories = () => {
   const params = useSearchParams();

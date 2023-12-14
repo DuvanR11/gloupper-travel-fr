@@ -10,9 +10,8 @@ import useSearchModal from "@/hooks/modal/useSearchModal";
 import Modal from "./Modal";
 import Heading from '../headers/Heading';
 import { CitySelect } from '../selects';
-import { arrayServices, cities } from '@/utils';
+import { arrayServices, categories, cities } from '@/utils';
 import ServicesInput from '../inputs/ServicesInput';
-import { categories } from '../navbar/Categories';
 import CategoryBox from '../inputs/CategoryInput';
 
 enum STEPS {
