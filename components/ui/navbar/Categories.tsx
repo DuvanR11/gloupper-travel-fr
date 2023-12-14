@@ -6,11 +6,13 @@ import {
   GiBarn, 
   GiBoatFishing, 
   GiCactus, 
+  GiJourney,
   GiCastle, 
   GiCaveEntrance, 
   GiForestCamp, 
   GiIsland,
-  GiWindmill
+  GiWindmill,
+  GiKneeling 
 } from 'react-icons/gi';
 import { FaSkiing } from 'react-icons/fa';
 import { BsSnow } from 'react-icons/bs';
@@ -20,11 +22,10 @@ import { MdOutlineVilla } from 'react-icons/md';
 import CategoryBox from "../../CategoryBox";
 import Container from '../../layouts/Container';
 
-
 export const categories = [
   {
     label: 'Miradores',
-    icon: TbBeach,
+    icon: TbMountain,
     description: 'Miradores',
   },
   {
@@ -39,7 +40,7 @@ export const categories = [
   },
   {
     label: 'Quebradas',
-    icon: TbMountain,
+    icon: TbBeach,
     description: 'Quebradas'
   },
   {
@@ -59,23 +60,28 @@ export const categories = [
   },
   {
     label: 'Senderos',
-    icon: FaSkiing,
+    icon: GiJourney,
     description: 'Senderos'
   },
   {
     label: 'Santuarios',
-    icon: GiCastle,
+    icon: GiKneeling,
     description: 'Santuarios'
   },
   {
     label: 'Museos',
-    icon: GiCaveEntrance,
+    icon: GiCastle,
     description: 'Museos'
   },
   {
     label: 'Camping',
     icon: GiForestCamp,
     description: 'Camping'
+  },
+  {
+    label: 'Hotel',
+    icon: MdOutlineVilla,
+    description: 'Hotel'
   },
 ]
 
