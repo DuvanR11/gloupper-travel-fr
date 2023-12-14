@@ -14,13 +14,12 @@ import useRentModal from '@/hooks/modal/useRentModal';
 
 import Modal from "./Modal";
 import CategoryInput from '../inputs/CategoryInput';
-import { categories } from '../navbar/Categories';
 import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
 import Heading from '../headers/Heading';
 import LocationSelects from '../inputs/Location';
 import ImagesUploads from '../inputs/ImagesUploads';
-import { arrayServices } from '@/utils';
+import { arrayServices, categories } from '@/utils';
 
 enum STEPS {
   CATEGORY = 0,

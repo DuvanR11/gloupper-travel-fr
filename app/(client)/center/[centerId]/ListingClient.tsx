@@ -11,7 +11,7 @@ import { useLoginModal } from "@/hooks/modal/auth";
 import { SafeUser } from "@/app/types";
 
 import Container from "@/components/layouts/Container";
-import { categories } from "@/components/ui/navbar/Categories";
+
 import ListingHead from "@/components/center/ListingHead";
 import ListingInfo from "@/components/center/ListingInfo";
 import ListingReservation from "@/components/center/ListingReservation";
@@ -22,6 +22,7 @@ import CenterReview from "@/components/center/CenterReview";
 import { ReviewModal } from "@/components/center/modals";
 import { useReviewModal } from "@/hooks/modal/center";
 import { Carousel } from "@/components/ui/swipper";
+import { categories } from "@/utils";
 
 const initialDateRange = {
   startDate: new Date(),
