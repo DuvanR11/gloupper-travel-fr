@@ -10,7 +10,8 @@ export * from './getReservations'
 export * from './getTours'
 export * from './getWallet'
 export * from './getReservations'
-
+export * from './getPublications'
+export * from './getReviews'
 
 
 

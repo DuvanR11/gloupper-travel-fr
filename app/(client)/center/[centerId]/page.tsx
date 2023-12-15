@@ -1,12 +1,11 @@
 
 import { getCurrentUser } from '@/app/actions/user'
-import { getListingById, getListings, getReservations } from "@/app/actions/center";
+import { getListingById, getListings, getPublications, getReservations,getReviews } from "@/app/actions/center";
 
 import ClientOnly from "@/components/layouts/ClientOnly";
 import EmptyState from "@/components/ui/loads/EmptyState";
 
 import ListingClient from "./ListingClient";
-import { getReviews } from '@/app/actions/center/getReviews';
 
 interface IParams {
   centerId?: string;
@@ -19,6 +18,8 @@ const ListingPage = async ({ params }: { params: IParams }) => {
   const reservations = await getReservations(params);
   const currentUser = await getCurrentUser();
   const reviews = await getReviews(params);
+  const publications = await getPublications(params);
+  
   
 
   if (!listing) {
@@ -37,6 +38,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
         listing={listing}
         interesting={interesting}
         reviews={reviews}
+        publications={publications}
       />
     </ClientOnly>
   );
