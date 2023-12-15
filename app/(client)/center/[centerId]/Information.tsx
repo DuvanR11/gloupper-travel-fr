@@ -12,7 +12,6 @@ import ListingSer from '@/components/center/ListingSer';
 import Heading from '@/components/ui/headers/Heading';
 import Map from '@/components/geolocalization/Map';
 import CenterReview from '@/components/center/CenterReview';
-import { Carousel } from '@/components/ui/swipper';
 import { Range } from "react-date-range";
 import { useRouter } from 'next/navigation';
 
