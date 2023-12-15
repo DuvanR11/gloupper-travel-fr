@@ -29,6 +29,7 @@ model User {
   reservations Reservation[]
   comments Comment[]
   reviews Reviews[]
+  post Post[]
 }
 
 model Account {
@@ -92,6 +93,7 @@ model Center {
   attractions Attraction[]
   comments Comment[]
   reviews Reviews[]
+  post Post[]
   
 }
 
@@ -204,4 +206,18 @@ model Reviews {
   createdAt   DateTime @default(now())
 
   @@index([userId, centerId])
+}
+
+model Post {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String @db.ObjectId
+  user       User @relation(fields: [userId], references: [id])
+  centerId   String @db.ObjectId 
+  center     Center @relation(fields: [centerId], references: [id], onDelete: Cascade)
+  images      String[]
+  title       String
+  content     String
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
