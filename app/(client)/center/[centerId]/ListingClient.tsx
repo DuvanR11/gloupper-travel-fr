@@ -122,7 +122,10 @@ const ListingClient: React.FC<ListingClientProps> = ({
                   />
               </CustomTabPanel>
               <CustomTabPanel value={value} index={1}>
-                 <Publications publications={publications}/>
+                 <Publications 
+                  publications={publications}
+                  currentUser={currentUser}
+                 />
               </CustomTabPanel>
             </Box>
             <hr />

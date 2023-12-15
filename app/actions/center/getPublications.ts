@@ -13,6 +13,7 @@ export async function getPublications(
         },
         include: {
             user: true,
+            center: true,
         }
       });
 
