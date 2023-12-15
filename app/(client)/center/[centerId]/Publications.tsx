@@ -1,7 +1,7 @@
 import { Post } from '@/components/marketing'
 import React from 'react'
 
-export const Publications = ({ publications }: any) => {
+export const Publications = ({ publications, currentUser }: any) => {
 
     console.log(publications)
   return (
@@ -11,6 +11,7 @@ export const Publications = ({ publications }: any) => {
                 <Post
                     key={index}
                     publication={publication}
+                    currentUser={currentUser}
 
                 />
             ))

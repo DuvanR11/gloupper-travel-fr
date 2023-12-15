@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export const Post = ({ publication }: any) => {
+export const Post = ({ publication, currentUser }: any) => {
+
   return (
     <div className="h-full w-full flex items-center justify-center">
         <div className="border w-full lg:w-9/12 bg-white mt-6 rounded-2xl p-4">
             <div className="flex items-center justify-between">
                 <div className="gap-3.5	flex items-center ">
-                    <img src="https://images.unsplash.com/photo-1617077644557-64be144aa306?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" className="object-cover bg-yellow-500 rounded-full w-10 h-10" />
+                    <img src={ publication.center.imageSrc } className="object-cover bg-yellow-500 rounded-full w-10 h-10" />
                     <div className="flex flex-col">
-                        <b className="mb-2 capitalize">sofia müller</b>
+                        <b className="mb-2 capitalize">{ publication.center.title }</b>
                         <time dateTime="06-08-21" className="text-gray-400 text-xs">06 August at 09.15 PM
                         </time>
                     </div>
@@ -100,9 +101,9 @@ export const Post = ({ publication }: any) => {
                     </div>
                 </div>
                 <div className="flex items-center justify-between mt-4">
-                    <img src="https://images.unsplash.com/photo-1595152452543-e5fc28ebc2b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"  className="bg-yellow-500 rounded-full w-10 h-10 object-cover border"/>
+                    <img src={ currentUser?.image }  className="bg-yellow-500 rounded-full w-10 h-10 object-cover border"/>
                     <div className="flex items-center	justify-between	 bg-gray-50 h-11 w-11/12 border rounded-2xl	 overflow-hidden px-4 ">
-                        <input type="text" className="h-full w-full bg-gray-50 outline-none " placeholder="Write your comment..." name="comment"/>
+                        <input type="text" className="h-full w-full bg-gray-50 outline-none " placeholder="Escribe un comentario..." name="comment"/>
                     </div>
                 </div>
         </div>
