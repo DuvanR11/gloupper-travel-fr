@@ -7,6 +7,7 @@ import './globals.css'
 import ClientOnly from '@/components/layouts/ClientOnly';
 import { UiProvider } from '@/context/ui';
 import { ToasterProvider, ModalsProvider } from '@/providers';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata = {
   title: 'Gloupper Travel',
@@ -35,6 +36,7 @@ export default async function RootLayout({
             {children}
           </UiProvider>
         </div>
+        <SpeedInsights />
       </body>
     </html>
   )
