@@ -4,10 +4,9 @@ import { FC, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 import { SafeListing, SafeUser } from "@/app/types";
-
-import Heading from "@/components/ui/headers/Heading";
-import Container from "@/components/layouts/Container";
 import ListingCard from "@/components/center/cards/ListingCard";
+import { Heading } from "@/components/ui/headers";
+import { Container } from "@/components/layouts";
 
 interface PropertiesClientProps {
   listings: SafeListing[],

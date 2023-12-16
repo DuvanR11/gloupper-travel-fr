@@ -12,11 +12,11 @@ import { useEffect, useMemo, useState } from "react";
 
 import Modal from '../../ui/modals/Modal';
 import ImageUpload from '../../ui/inputs/ImageUpload';
-import Heading from '../../ui/headers/Heading';
 import ImagesUploads from '../../ui/inputs/ImagesUploads';
 import Input from '../../ui/inputs/Input';
 import { useAccommodationModal } from '@/hooks/modal/center';
 import { convertToSlug } from '@/utils';
+import { Heading } from '@/components/ui/headers';
 
 enum STEPS {
   INFORMATION = 0,

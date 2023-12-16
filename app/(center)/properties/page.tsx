@@ -1,5 +1,5 @@
 
-import EmptyState from "@/components/ui/loads/EmptyState";
+
 import ClientOnly from "@/components/layouts/ClientOnly";
 
 import { getCurrentUser } from '@/app/actions/user'
@@ -7,14 +7,15 @@ import { getListings } from "@/app/actions/center";
 
 import PropertiesClient from "./PropertiesClient";
 import Navbar from "@/components/ui/navbar/Navbar";
+import { EmptyState } from "@/components/ui/loads";
 
 const PropertiesPage = async () => {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
     return <EmptyState
-      title="Unauthorized"
-      subtitle="Please login"
+      title="No autorizado"
+      subtitle="Por favor Iniciar sesión"
     />
   }
 
@@ -23,10 +24,13 @@ const PropertiesPage = async () => {
   if (listings.length === 0) {
     return (
       <ClientOnly>
-        <EmptyState
-          title="No properties found"
-          subtitle="Looks like you have no properties."
-        />
+        <Navbar currentUser={currentUser}/>
+        <div className="pb-10 pt-28">
+          <EmptyState
+            title="No se encontraron centros"
+            subtitle="Parece que no tienes propiedades."
+          />
+        </div>
       </ClientOnly>
     );
   }

@@ -11,11 +11,11 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from "react";
 
 import Modal from '../../ui/modals/Modal';
-import Heading from '../../ui/headers/Heading';
 import ImagesUploads from '../../ui/inputs/ImagesUploads';
 import Input from '../../ui/inputs/Input';
 import { convertToSlug } from '@/utils';
 import usePublicationModal from '@/hooks/modal/usePublicationModal';
+import { Heading } from '../headers';
 
 enum STEPS {
   INFORMATION = 0,

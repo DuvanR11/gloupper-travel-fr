@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 
 import Button from "../buttons/Button";
-import Heading from "../headers/Heading";
+import { Heading } from "../headers";
 
 interface EmptyStateProps {
   title?: string;
@@ -11,7 +11,7 @@ interface EmptyStateProps {
   showReset?: boolean;
 }
 
-const EmptyState: React.FC<EmptyStateProps> = ({
+export const EmptyState: React.FC<EmptyStateProps> = ({
   title = "No hay coincidencias exactas",
   subtitle = "Intenta cambiar o eliminar algunos de sus filtros.",
   showReset
@@ -47,4 +47,3 @@ const EmptyState: React.FC<EmptyStateProps> = ({
    );
 }
  
-export default EmptyState;

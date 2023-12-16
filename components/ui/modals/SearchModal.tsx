@@ -8,11 +8,12 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import useSearchModal from "@/hooks/modal/useSearchModal";
 
 import Modal from "./Modal";
-import Heading from '../headers/Heading';
+
 import { CitySelect } from '../selects';
 import { arrayServices, categories, cities } from '@/utils';
 import ServicesInput from '../inputs/ServicesInput';
 import CategoryBox from '../inputs/CategoryInput';
+import { Heading } from '../headers';
 
 enum STEPS {
   LOCATION = 0,

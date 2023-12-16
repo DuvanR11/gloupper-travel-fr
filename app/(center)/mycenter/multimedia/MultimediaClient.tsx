@@ -11,12 +11,13 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import Heading from '@/components/ui/headers/Heading';
+
 import { useState } from 'react';
 import { FaCut } from 'react-icons/fa';
 
 import { useUploadImage } from '@/hooks/modal/multimedia';
 import { UploadImage } from '@/components/ui/modals';
+import { Heading } from '@/components/ui/headers';
 
 interface AccountClientProps {
     center: any

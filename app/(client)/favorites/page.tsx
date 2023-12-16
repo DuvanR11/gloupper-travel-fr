@@ -1,11 +1,11 @@
 
-import EmptyState from "@/components/ui/loads/EmptyState";
 import ClientOnly from "@/components/layouts/ClientOnly";
 
 import { getCurrentUser } from '@/app/actions/user'
 import { getFavoriteListings } from "@/app/actions/center";
 
 import FavoritesClient from "./FavoritesClient";
+import { EmptyState } from "@/components/ui/loads";
 
 const ListingPage = async () => {
   const listings = await getFavoriteListings();

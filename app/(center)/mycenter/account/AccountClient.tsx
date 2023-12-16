@@ -4,7 +4,6 @@ import { toast } from "react-hot-toast";
 
 import { SafeUser } from "@/app/types";
 
-import Heading from "@/components/ui/headers/Heading";
 import { Button, Grid, TextField } from "@mui/material";
 import { FormField } from "@/components/ui/inputs";
 import { validations } from "@/utils";

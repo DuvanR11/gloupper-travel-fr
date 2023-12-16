@@ -16,8 +16,8 @@ import { useRegisterModal, useLoginModal } from "@/hooks/modal/auth";
 
 import Modal from "./Modal";
 import Input from "../inputs/Input";
-import Heading from "../headers/Heading";
 import Button from "../buttons/Button";
+import { Heading } from "../headers";
 
 export const LoginModal = () => {
   const router = useRouter();

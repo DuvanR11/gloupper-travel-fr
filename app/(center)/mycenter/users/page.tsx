@@ -1,6 +1,6 @@
 import { getListings } from '@/app/actions/center';
 import { getCurrentUser } from '@/app/actions/user'
-import EmptyState from '@/components/ui/loads/EmptyState';
+import { EmptyState } from '@/components/ui/loads';
 import { IParamsCenter } from '@/interfaces';
 
 

@@ -1,10 +1,10 @@
 
 import { getListings, getAttraction } from '@/app/actions/center';
 import { getCurrentUser } from '@/app/actions/user'
-import EmptyState from '@/components/ui/loads/EmptyState';
 
 import AttractionsClient from './AttractionsClient';
 import { IParamsCenter } from '@/interfaces';
+import { EmptyState } from '@/components/ui/loads';
 
 interface AttractionsPageProps { searchParams: IParamsCenter };
 

@@ -4,10 +4,11 @@ import Image from "next/image";
 
 import { SafeUser } from "@/app/types";
 
-import Heading from "../ui/headers/Heading";
-import HeartButton from "../ui/buttons/HeartButton";
 
-interface ListingHeadProps {
+import HeartButton from "../../ui/buttons/HeartButton";
+import { Heading } from "../../ui/headers";
+
+interface HeadSectionProps {
   title: string;
   locationValue: string;
   imageSrc: string;
@@ -16,7 +17,7 @@ interface ListingHeadProps {
   currentUser?: SafeUser | null
 }
 
-const ListingHead: React.FC<ListingHeadProps> = ({
+export const HeadSection: React.FC<HeadSectionProps> = ({
   title,
   locationValue,
   imageSrc,
@@ -33,7 +34,6 @@ const ListingHead: React.FC<ListingHeadProps> = ({
           subtitle={`Huila, ${locationValue}`}
         />
         
-      
         <HeartButton 
               centerId={id}
               currentUser={currentUser}
@@ -72,4 +72,3 @@ const ListingHead: React.FC<ListingHeadProps> = ({
    );
 }
  
-export default ListingHead;

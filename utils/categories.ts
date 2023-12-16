@@ -1,8 +1,5 @@
-import { TbBeach, TbMountain, TbPool } from 'react-icons/tb';
+import { TbMountain } from 'react-icons/tb';
 import { 
-  GiBarn, 
-  GiBoatFishing, 
-  GiCactus, 
   GiJourney,
   GiCastle, 
   GiWaterfall, 

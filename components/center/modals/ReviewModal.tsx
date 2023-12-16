@@ -10,12 +10,12 @@ import {
 } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
-import Heading from "@/components/ui/headers/Heading";
 import Input from "@/components/ui/inputs/Input";
 import Button from "@/components/ui/buttons/Button";
 import Modal from "@/components/ui/modals/Modal";
 import { useReviewModal } from "@/hooks/modal/center";
 import axios from "axios";
+import { Heading } from "@/components/ui/headers";
 
 
 export const ReviewModal = ({ center }: any) => {

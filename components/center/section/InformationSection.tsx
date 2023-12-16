@@ -1,20 +1,11 @@
-'use client';
-
-import dynamic from "next/dynamic";
 import { IconType } from "react-icons";
 
 import { SafeUser } from "@/app/types";
-import { 
-  GiIsland,
-} from 'react-icons/gi';
-import ListingCategory from "./ListingCategory";
-import ListingServices from "./ListingServices";
+import { GiIsland } from 'react-icons/gi';
+import { TextIcon } from "../../ui/text";
 
-const Map = dynamic(() => import('../geolocalization/Map'), { 
-  ssr: false 
-});
 
-interface ListingInfoProps {
+interface InformationSectionProps {
   user: SafeUser,
   description: string;
   services: string[]
@@ -26,35 +17,27 @@ interface ListingInfoProps {
   locationValue: string;
 }
 
-const ListingInfo: React.FC<ListingInfoProps> = ({
-  user,
+export const InformationSection: React.FC<InformationSectionProps> = ({
   description,
   category,
-  locationValue,
   services
 }) => {
 
   return ( 
     <div className="col-span-4 flex flex-col gap-8">
-      <div 
-        className="
-          text-xl 
-          font-semibold 
-        "
-      >
-        <div>Alojamiento vacacional entero - Anfitrión: Bestbooking</div>
+      <div className="text-xl font-semibold">
+        Alojamiento vacacional entero - Anfitrión: Bestbooking
       </div>
       <hr />
       {category && (
-        <ListingCategory
+        <TextIcon
           icon={category.icon} 
           label={category?.label}
           description={category?.description} 
         />
       )}
       <hr />
-      <div className="
-      text-lg font-light text-neutral-500">
+      <div className="text-lg font-light text-neutral-500">
         {description}
       </div>
       <hr />
@@ -62,19 +45,17 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
           <div className="font-semibold text-xl mb-4">Lo que este lugar ofrece</div>
           <div className="grid grid-cols-2 gap-5">
             {services.map((service, index) => (
-              <ListingServices
-              key={index}
-              icon={GiIsland} 
-              label={service}
-              description={service} 
+              <TextIcon
+                key={index}
+                icon={GiIsland} 
+                label={service}
+                small={ true }
               />
             ))}
           </div>
         </div>
       <hr />
-      {/* <Map center={[2, 70]} /> */}
     </div>
    );
 }
  
-export default ListingInfo;

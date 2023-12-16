@@ -12,10 +12,10 @@ import { useEffect, useMemo, useState } from "react";
 
 import Modal from "../../ui/modals/Modal";
 import ImageUpload from '../../ui/inputs/ImageUpload';
-import Heading from '../../ui/headers/Heading';
 import ImagesUploads from '../../ui/inputs/ImagesUploads';
 import { useFoodModal } from '@/hooks/modal/center';
 import Input from '../../ui/inputs/Input';
+import { Heading } from '@/components/ui/headers';
 
 enum STEPS {
   INFORMATION = 0,

@@ -3,9 +3,9 @@ import { getCurrentUser } from '@/app/actions/user'
 import { getListingById, getListings, getPublications, getReservations,getReviews } from "@/app/actions/center";
 
 import ClientOnly from "@/components/layouts/ClientOnly";
-import EmptyState from "@/components/ui/loads/EmptyState";
 
 import ListingClient from "./ListingClient";
+import { EmptyState } from '@/components/ui/loads';
 
 interface IParams {
   centerId?: string;

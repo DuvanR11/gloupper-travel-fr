@@ -1,8 +1,8 @@
 import { getListings, getFoods } from '@/app/actions/center';
 import { getCurrentUser } from '@/app/actions/user'
-import EmptyState from '@/components/ui/loads/EmptyState';
 import FoodClient from './FoodClient';
 import { IParamsCenter } from '@/interfaces';
+import { EmptyState } from '@/components/ui/loads';
 
 interface FoodPageProps { searchParams: IParamsCenter };
 
