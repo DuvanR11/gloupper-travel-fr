@@ -16,10 +16,10 @@ import Modal from "./Modal";
 import CategoryInput from '../inputs/CategoryInput';
 import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
-import Heading from '../headers/Heading';
 import LocationSelects from '../inputs/Location';
 import ImagesUploads from '../inputs/ImagesUploads';
 import { arrayServices, categories } from '@/utils';
+import { Heading } from '../headers';
 
 enum STEPS {
   CATEGORY = 0,

@@ -1,8 +1,8 @@
 import { getListings, getTours, getWalletById } from '@/app/actions/center';
 import { getCurrentUser } from '@/app/actions/user'
-import EmptyState from '@/components/ui/loads/EmptyState';
 import { IParamsCenter } from '@/interfaces';
 import WalletClient from './WalletClient';
+import { EmptyState } from '@/components/ui/loads';
 
 
 interface WalletProps { searchParams: IParamsCenter };

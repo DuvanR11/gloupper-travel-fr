@@ -1,11 +1,11 @@
 
-import EmptyState from "@/components/ui/loads/EmptyState";
 import ClientOnly from "@/components/layouts/ClientOnly";
 
 import { getCurrentUser } from '@/app/actions/user'
 import { getReservations } from "@/app/actions/center";
 
 import TripsClient from "./ReservationsClient";
+import { EmptyState } from "@/components/ui/loads";
 
 const ReservationsPage = async () => {
   const currentUser = await getCurrentUser();

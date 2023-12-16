@@ -14,7 +14,7 @@ import useRentModal from '@/hooks/modal/useRentModal';
 
 import Modal from "./Modal";
 import ImageUpload from '../inputs/ImageUpload';
-import Heading from '../headers/Heading';
+import { Heading } from '../headers';
 
 export const MultimediaModal = () => {
   const router = useRouter();

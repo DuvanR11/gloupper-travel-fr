@@ -1,9 +1,10 @@
 
 import { getListings } from '@/app/actions/center';
 import { getCurrentUser } from '@/app/actions/user'
-import EmptyState from '@/components/ui/loads/EmptyState';
+
 import MultimediaClient from './MultimediaClient';
 import { IParamsCenter } from '@/interfaces';
+import { EmptyState } from '@/components/ui/loads';
 
 interface FoodPageProps { searchParams: IParamsCenter };
 

@@ -1,10 +1,8 @@
-'use client';
-
 interface ContainerProps {
   children: React.ReactNode
 };
 
-const Container: React.FC<ContainerProps> = ({ children }) => {
+export const Container: React.FC<ContainerProps> = ({ children }) => {
   return ( 
     <div
       className="
@@ -21,4 +19,3 @@ const Container: React.FC<ContainerProps> = ({ children }) => {
    );
 }
  
-export default Container;

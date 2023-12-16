@@ -1,9 +1,9 @@
 import { getListings, getAccommodations } from '@/app/actions/center';
 import { getCurrentUser } from '@/app/actions/user'
-import EmptyState from '@/components/ui/loads/EmptyState';
 
 import AccommodationClient from './AccommodationClient';
 import { IParamsCenter } from '@/interfaces';
+import { EmptyState } from '@/components/ui/loads';
 
 interface TourPageProps { searchParams: IParamsCenter };
 

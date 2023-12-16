@@ -6,36 +6,32 @@ import { differenceInDays, eachDayOfInterval } from 'date-fns';
 import { categories } from '@/utils';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import ListingInfo from '@/components/center/ListingInfo';
-import ListingReservation from '@/components/center/ListingReservation';
-import ListingSer from '@/components/center/ListingSer';
-import Heading from '@/components/ui/headers/Heading';
+import { ReservationSection, InformationSection, ServicesSection } from '@/components/center/section';
 import Map from '@/components/geolocalization/Map';
-import CenterReview from '@/components/center/CenterReview';
 import { Range } from "react-date-range";
 import { useRouter } from 'next/navigation';
-
-const initialDateRange = {
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection'
-  };
+import { Heading } from '@/components/ui/headers';
+import { Review } from '@/components/ui/reviews';
 
 interface InformationProps {
-    reservations?: any[] // SafeReservation[];
-    listing: any & { //SafeListing
-      user: SafeUser;
-    };
-    interesting: any;
-    reviews?: any | null;
-    currentUser?: SafeUser | null;
+  reservations?: any[] // SafeReservation[];
+  listing: any & { //SafeListing
+    user: SafeUser;
+  };
+  reviews?: any | null;
+  currentUser?: SafeUser | null;
 }
+
+const initialDateRange = {
+  startDate: new Date(),
+  endDate: new Date(),
+  key: 'selection'
+};
 
 const Dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabados', 'Domingo']
 
 export const Information: FC<InformationProps> = ({
     listing,
-    interesting,
     reservations = [],
     currentUser,
     reviews
@@ -125,101 +121,101 @@ export const Information: FC<InformationProps> = ({
 
   return (
     <div>
-        {/* Section Information */}
+      {/* Section Information */}
+      <div 
+      className="
+          grid 
+          grid-cols-1 
+          md:grid-cols-7 
+          md:gap-10 
+          mt-6
+      "
+      >
+        <InformationSection
+            user={listing.user}
+            services={listing.services}
+            category={category}
+            description={listing.description}
+            locationValue={listing.city}
+        />
         <div 
-        className="
-            grid 
-            grid-cols-1 
-            md:grid-cols-7 
-            md:gap-10 
-            mt-6
-        "
+            className="
+            order-first 
+            mb-10 
+            md:order-last 
+            md:col-span-3
+            "
         >
-            <ListingInfo
-                user={listing.user}
-                services={listing.services}
-                category={category}
-                description={listing.description}
-                locationValue={listing.city}
+            <ReservationSection
+            price={22}
+            totalPrice={2}
+            onChangeDate={(value) => setDateRange(value)}
+            dateRange={dateRange}
+            onSubmit={onCreateReservation}
+            disabled={isLoading}
+            disabledDates={disabledDates}
             />
-            <div 
-                className="
-                order-first 
-                mb-10 
-                md:order-last 
-                md:col-span-3
-                "
-            >
-                <ListingReservation
-                price={22}
-                totalPrice={2}
-                onChangeDate={(value) => setDateRange(value)}
-                dateRange={dateRange}
-                onSubmit={onCreateReservation}
-                disabled={isLoading}
-                disabledDates={disabledDates}
-                />
-            </div>
         </div>
+      </div>
 
-        {/* Section Services */}
-        <ListingSer 
+      {/* Section Services */}
+      <ServicesSection 
         currentUser={ currentUser } 
         center={ listing }
-        />
-        {/* Section Maps */}
-        <div>
-            <Heading
-                title='A dónde irás'
-                subtitle={`Gigante, Huila, Colombia`}
-            />
-            <br />
-            <Map center={[2.3677, -75.5695]}/>
-            <br /> <br /><hr />
-        </div>
+      />
+      {/* Section Maps */}
+      <div>
+          <Heading
+              title='A dónde irás'
+              subtitle={`Gigante, Huila, Colombia`}
+          />
+          <br />
+          <Map center={[2.3677, -75.5695]}/>
+          <br /> <br /><hr />
+      </div>
 
-        {/* Section Reseñas */}
-        <div 
-        className="
-            grid 
-            grid-cols-1 
-            md:grid-cols-3
-            md:gap-5
-            mt-6
-        ">
-            <div className="col-span-1">
-                <div  className="mb-4 rounded p-4 bg-white border-[1px] border-neutral-200">
-                <div className="flex items-center gap-2">
-                    <img className="h-10 w-10 flex-none rounded-full bg-gray-50" src={listing.imageSrc} alt="" />
-                    <p className="text-lg font-bold">{listing.title}</p>
-                </div>
-                <p className="underline mt-2">{listing.category}</p>
-                <p>Reseñas de usuario ( { listing.reviews.length } )</p>
-                <p>Calificación: 4.5</p>
-                </div>
-                <div className="rounded p-4 bg-white border-[1px] border-neutral-200">
-                <p className="text-lg font-bold mb-2">Horarios de atención</p>
-                <ul>
-                    {Dias.map((dia) => (
-                    <li key={dia} className="flex justify-between mb-1">
-                        <span>{dia}</span>
-                        <span>11:00 - 22:00</span>
-                    </li>
-                    ))}
-                </ul>
-                </div>
-            </div>
-            <div className="col-span-2">
-                <Heading
-                title='Reseñas'
-                subtitle={'Esto piensan otros usuarios'}
-                />
-                <button onClick={() => onOpenModalReview() }>Crear Reseña</button>
-                <br />
-                <CenterReview reviews={ reviews }/>
-            </div>
-            <br />
-        </div>
+      {/* Section Reseñas */}
+      <div 
+      className="
+          grid 
+          grid-cols-1 
+          md:grid-cols-3
+          md:gap-5
+          mt-6
+      ">
+          <div className="col-span-1">
+              <div  className="mb-4 rounded p-4 bg-white border-[1px] border-neutral-200">
+              <div className="flex items-center gap-2">
+                  <img className="h-10 w-10 flex-none rounded-full bg-gray-50" src={listing.imageSrc} alt="" />
+                  <p className="text-lg font-bold">{listing.title}</p>
+              </div>
+              <p className="underline mt-2">{listing.category}</p>
+              <p>Reseñas de usuario ( { listing.reviews.length } )</p>
+              <p>Calificación: 4.5</p>
+              </div>
+              <div className="rounded p-4 bg-white border-[1px] border-neutral-200">
+              <p className="text-lg font-bold mb-2">Horarios de atención</p>
+              <ul>
+                  {Dias.map((dia) => (
+                  <li key={dia} className="flex justify-between mb-1">
+                      <span>{dia}</span>
+                      <span>11:00 - 22:00</span>
+                  </li>
+                  ))}
+              </ul>
+              </div>
+          </div>
+          <div className="col-span-2">
+              <Heading
+              title='Reseñas'
+              subtitle={'Esto piensan otros usuarios'}
+              />
+              <button onClick={() => onOpenModalReview() }>Crear Reseña</button>
+              <br />
+              <Review reviews={ reviews }/>
+          </div>
+          <br />
+      </div>
     </div>
   )
 }

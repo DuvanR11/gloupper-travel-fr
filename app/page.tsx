@@ -1,12 +1,12 @@
-import Container from "@/components/layouts/Container";
+import { Container } from "@/components/layouts";
 import ListingCard from "@/components/center/cards/ListingCard";
-import EmptyState from "@/components/ui/loads/EmptyState";
 
 import { getListings } from "./actions/center";
 import { getCurrentUser } from '@/app/actions/user'
 import Navbar from "@/components/ui/navbar/Navbar";
 import { IParamsCenter } from "@/interfaces";
 import { FooterClient } from "@/components/client/layout";
+import { EmptyState } from "@/components/ui/loads";
 
 interface HomeProps {
   searchParams: IParamsCenter

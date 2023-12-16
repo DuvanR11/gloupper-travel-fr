@@ -1,7 +1,6 @@
 'use client';
 
 import axios from "axios";
-import { AiFillGithub } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
@@ -16,8 +15,8 @@ import { useRegisterModal, useLoginModal } from "@/hooks/modal/auth";
 
 import Modal from "./Modal";
 import Input from "../inputs/Input";
-import Heading from "../headers/Heading";
 import Button from "../buttons/Button";
+import { Heading } from "../headers";
 
 export const RegisterModal= () => {
   const registerModal = useRegisterModal();

@@ -11,9 +11,9 @@ import { useRouter } from "next/navigation";
 
 import Modal from "./Modal";
 
-import Heading from "../headers/Heading";
 import ImageUpload from "../inputs/ImageUpload";
 import { useUploadImage } from "@/hooks/modal/multimedia";
+import { Heading } from "../headers";
 
 export const UploadImage = ({ upload }: any) => {
   const router = useRouter();

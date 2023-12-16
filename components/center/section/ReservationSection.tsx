@@ -1,11 +1,9 @@
-'use client';
 
 import { Range } from "react-date-range";
+import Button from "../../ui/buttons/Button";
+import Calendar from "../../ui/inputs/Calendar";
 
-import Button from "../ui/buttons/Button";
-import Calendar from "../ui/inputs/Calendar";
-
-interface ListingReservationProps {
+interface ReservationSectionProps {
   price: number;
   dateRange: Range,
   totalPrice: number;
@@ -15,8 +13,8 @@ interface ListingReservationProps {
   disabledDates: Date[];
 }
 
-const ListingReservation: React.FC<
-  ListingReservationProps
+export const ReservationSection: React.FC<
+  ReservationSectionProps
 > = ({
   price,
   dateRange,
@@ -50,7 +48,7 @@ const ListingReservation: React.FC<
         value={dateRange}
         disabledDates={disabledDates}
         onChange={(value) => 
-          onChangeDate(value.selection)}
+        onChangeDate(value.selection)}
       />
       <hr />
       <div className="p-4">
@@ -83,4 +81,3 @@ const ListingReservation: React.FC<
    );
 }
  
-export default ListingReservation;
